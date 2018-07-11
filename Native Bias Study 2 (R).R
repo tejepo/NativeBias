@@ -23,4 +23,5 @@ StudyTwoData <- StudyTwoData[-1:-2,]
 StudyTwoData[,2]
 as.numeric(StudyTwoData[,2])
 
+#Recoding a factor to a numeric. This avoids ending up with numeric values that represent the level codes and instead leaves you with the actual values displayed. Useful!
 StudyTwoData[,2] <- as.numeric(levels(StudyTwoData[,2]))[StudyTwoData[,2]]
