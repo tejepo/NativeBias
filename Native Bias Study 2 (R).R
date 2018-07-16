@@ -2,7 +2,7 @@ library(tidyverse)
 library(magrittr)
 
 #Set working directory
-setwd("~/Documents/GitHub/NativeBias")
+setwd("~/Documents/GitHub/Native Bias")
 
 #Load in Data
 StudyTwoData <- read.csv("Native Bias Study 2 (Names).csv")
@@ -46,8 +46,8 @@ str(StudyTwoData)
 #Attempt
 #StudyTwoData[,6] <- ifelse(StudyTwoData[,6] == "Strongly Disagree", 1, ifelse(StudyTwoData[,6] == "Disagree", 2, ifelse(StudyTwoData[,6] == "Somewhat Disagree", 3, ifelse(StudyTwoData[,6] == "Neither Disagree nor Agree", 4, ifelse(StudyTwoData[,6]== "Somewhat Agree", 5,ifelse(StudyTwoData[,6] == "Agree", 6, ifelse(StudyTwoData[,6] == "Strongly Agree", 7,)))))))
 
-install.packages("car")
-library(car)
+#install.packages("car")
+#library(car)
 
 StudyTwoData$Nationalism_Nationalism_1<-recode(StudyTwoData$Nationalism_Nationalism_1,"'Strongly Disagree'=1")
 StudyTwoData$Nationalism_Nationalism_1<-recode(StudyTwoData$Nationalism_Nationalism_1,"'Disagree'=2")
@@ -56,3 +56,6 @@ StudyTwoData$Nationalism_Nationalism_1<-recode(StudyTwoData$Nationalism_National
 StudyTwoData$Nationalism_Nationalism_1<-recode(StudyTwoData$Nationalism_Nationalism_1,"'Somewhat Agree'=5")
 StudyTwoData$Nationalism_Nationalism_1<-recode(StudyTwoData$Nationalism_Nationalism_1,"'Agree'=6")
 StudyTwoData$Nationalism_Nationalism_1<-recode(StudyTwoData$Nationalism_Nationalism_1,"'Strongly Agree'=7")
+
+#With the tidyverse package you end up not needing "car" (yet anyway). tidyverse is a package that contains several other useful packages including dplyr. With the dplyr recode function you can consolidate your many lines of code into just one.
+StudyTwoData$Nationalism_Nationalism_1 <- recode(StudyTwoData$Nationalism_Nationalism_1, "Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6, "Strongly Agree" = 7)
