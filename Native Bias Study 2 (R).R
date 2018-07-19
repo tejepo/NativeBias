@@ -338,21 +338,21 @@ StudyTwoData[,217]
 as.numeric(StudyTwoData[,217])
 StudyTwoData[,217] <- as.numeric(levels(StudyTwoData[,217]))[StudyTwoData[,217]]
 
-StudyTwoData[,228]
-as.numeric(StudyTwoData[,228])
-StudyTwoData[,228] <- as.numeric(levels(StudyTwoData[,228]))[StudyTwoData[,228]]
+#StudyTwoData[,228]
+#as.numeric(StudyTwoData[,228])
+#StudyTwoData[,228] <- as.numeric(levels(StudyTwoData[,228]))[StudyTwoData[,228]]
 
-StudyTwoData[,229]
-as.numeric(StudyTwoData[,229])
-StudyTwoData[,229] <- as.numeric(levels(StudyTwoData[,229]))[StudyTwoData[,229]]
+#StudyTwoData[,229]
+#as.numeric(StudyTwoData[,229])
+#StudyTwoData[,229] <- as.numeric(levels(StudyTwoData[,229]))[StudyTwoData[,229]]
 
-StudyTwoData[,230]
-as.numeric(StudyTwoData[,230])
-StudyTwoData[,230] <- as.numeric(levels(StudyTwoData[,230]))[StudyTwoData[,230]]
+#StudyTwoData[,230]
+#as.numeric(StudyTwoData[,230])
+#StudyTwoData[,230] <- as.numeric(levels(StudyTwoData[,230]))[StudyTwoData[,230]]
 
-StudyTwoData[,231]
-as.numeric(StudyTwoData[,231])
-StudyTwoData[,231] <- as.numeric(levels(StudyTwoData[,231]))[StudyTwoData[,231]]
+#StudyTwoData[,231]
+#as.numeric(StudyTwoData[,231])
+#StudyTwoData[,231] <- as.numeric(levels(StudyTwoData[,231]))[StudyTwoData[,231]]
 
 StudyTwoData[,256]
 as.numeric(StudyTwoData[,256])
@@ -707,3 +707,327 @@ StudyTwoData$DV2_DV2_14 <- as.numeric(StudyTwoData$DV2_DV2_14)
 
 StudyTwoData$DV3_Q39_1 <- dplyr::recode(StudyTwoData$DV3_Q39_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
 StudyTwoData$DV3_Q39_1 <- as.numeric(StudyTwoData$DV3_Q39_1)
+StudyTwoData$DV3_Q39_2 <- dplyr::recode(StudyTwoData$DV3_Q39_2,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$DV3_Q39_2 <- as.numeric(StudyTwoData$DV3_Q39_2)
+StudyTwoData$DV3_Q39_4 <- dplyr::recode(StudyTwoData$DV3_Q39_4,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$DV3_Q39_4 <- as.numeric(StudyTwoData$DV3_Q39_4)
+StudyTwoData$DV3_Q39_5 <- dplyr::recode(StudyTwoData$DV3_Q39_5,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$DV3_Q39_5 <- as.numeric(StudyTwoData$DV3_Q39_5)
+StudyTwoData$DV3_Q39_6 <- dplyr::recode(StudyTwoData$DV3_Q39_6,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$DV3_Q39_6 <- as.numeric(StudyTwoData$DV3_Q39_6)
+StudyTwoData$DV3_Q39_7 <- dplyr::recode(StudyTwoData$DV3_Q39_7,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$DV3_Q39_7 <- as.numeric(StudyTwoData$DV3_Q39_7)
+StudyTwoData$DV3_Q39_8 <- dplyr::recode(StudyTwoData$DV3_Q39_8,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$DV3_Q39_8 <- as.numeric(StudyTwoData$DV3_Q39_8)
+StudyTwoData$DV3_Q39_9 <- dplyr::recode(StudyTwoData$DV3_Q39_9,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$DV3_Q39_9 <- as.numeric(StudyTwoData$DV3_Q39_9)
+
+StudyTwoData$AntiSov_AntiSov_1 <- dplyr::recode(StudyTwoData$AntiSov_AntiSov_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$AntiSov_AntiSov_1 <- as.numeric(StudyTwoData$AntiSov_AntiSov_1)
+StudyTwoData$AntiSov_AntiSov_2 <- dplyr::recode(StudyTwoData$AntiSov_AntiSov_2,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$AntiSov_AntiSov_2 <- as.numeric(StudyTwoData$AntiSov_AntiSov_2)
+StudyTwoData$AntiSov_AntiSov_3 <- dplyr::recode(StudyTwoData$AntiSov_AntiSov_3,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$AntiSov_AntiSov_3 <- as.numeric(StudyTwoData$AntiSov_AntiSov_3)
+StudyTwoData$AntiSov_AntiSov_4 <- dplyr::recode(StudyTwoData$AntiSov_AntiSov_4,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$AntiSov_AntiSov_4 <- as.numeric(StudyTwoData$AntiSov_AntiSov_4)
+StudyTwoData$AntiSov_AntiSov_5 <- dplyr::recode(StudyTwoData$AntiSov_AntiSov_5,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$AntiSov_AntiSov_5 <- as.numeric(StudyTwoData$AntiSov_AntiSov_5)
+StudyTwoData$AntiSov_AntiSov_6 <- dplyr::recode(StudyTwoData$AntiSov_AntiSov_6,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$AntiSov_AntiSov_6 <- as.numeric(StudyTwoData$AntiSov_AntiSov_6)
+
+StudyTwoData[,144]
+as.numeric(StudyTwoData[,144])
+StudyTwoData[,144] <- as.numeric(levels(StudyTwoData[,144]))[StudyTwoData[,144]]
+
+StudyTwoData[,145]
+as.numeric(StudyTwoData[,145])
+StudyTwoData[,145] <- as.numeric(levels(StudyTwoData[,145]))[StudyTwoData[,145]]
+
+StudyTwoData[,146]
+as.numeric(StudyTwoData[,146])
+StudyTwoData[,146] <- as.numeric(levels(StudyTwoData[,146]))[StudyTwoData[,146]]
+
+StudyTwoData[,147]
+as.numeric(StudyTwoData[,147])
+StudyTwoData[,147] <- as.numeric(levels(StudyTwoData[,147]))[StudyTwoData[,147]]
+
+StudyTwoData$MealatYourHome <- dplyr::recode(StudyTwoData$MealatYourHome,"No" = 0, "Yes" = 1, "Not Applicable" = 99)
+StudyTwoData$MealatYourHome <- as.numeric(StudyTwoData$MealatYourHome)
+
+StudyTwoData$MealatTheirHome <- dplyr::recode(StudyTwoData$MealatTheirHome,"No" = 0, "Yes" = 1, "N/A" = 99)
+StudyTwoData$MealatTheirHome <- as.numeric(StudyTwoData$MealatTheirHome)
+
+StudyTwoData$Vacation <- dplyr::recode(StudyTwoData$Vacation,"No" = 0, "Yes" = 1, "Not Applicable" = 99)
+StudyTwoData$Vacation <- as.numeric(StudyTwoData$Vacation)
+
+StudyTwoData$SocialEvent <- dplyr::recode(StudyTwoData$SocialEvent,"No" = 0, "Yes" = 1, "Not Applicable" = 99)
+StudyTwoData$SocialEvent <- as.numeric(StudyTwoData$SocialEvent)
+
+StudyTwoData$Leuisure <- dplyr::recode(StudyTwoData$Leuisure,"Never" = 1, "Rarely" = 2, "Sometimes" = 3, "Often" = 4, "Very Often" = 5, "Not Applicable" = 99)
+StudyTwoData$Leuisure <- as.numeric(StudyTwoData$Leuisure)
+
+StudyTwoData$Speaking <- dplyr::recode(StudyTwoData$Speaking, "Daily" = 1, "4-6 times a week" = 2, "2-3 times a week" = 3, "Once a week" = 4, "A few times a month" = 5, "Once a month"= 6, "Once a year"= 7, "It has been over a year since I last spoke with one of the Native American people I know" = 8, "Not Applicable"= 99)
+StudyTwoData$Speaking <- as.numeric(StudyTwoData$Speaking)
+
+#StudyTwoData$Share_Share_1 <- dplyr::recode(StudyTwoData$Share_Share_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7, "N/A"= 99)
+#StudyTwoData$Share_Share_1 <- as.numeric(StudyTwoData$Share_Share_1)
+
+StudyTwoData[,161]
+as.numeric(StudyTwoData[,161])
+StudyTwoData[,161] <- as.numeric(levels(StudyTwoData[,161]))[StudyTwoData[,161]]
+
+StudyTwoData[,162]
+as.numeric(StudyTwoData[,162])
+StudyTwoData[,162] <- as.numeric(levels(StudyTwoData[,162]))[StudyTwoData[,162]]
+
+StudyTwoData[,163]
+as.numeric(StudyTwoData[,163])
+StudyTwoData[,163] <- as.numeric(levels(StudyTwoData[,163]))[StudyTwoData[,163]]
+
+#StudyTwoData$FamProducts <- dplyr::recode(StudyTwoData$FamProducts, "American Spirit cigarettes" = 1,"Big Chief sugar" = 4 "Black Hawk cigarettes" = 5, "Calumet baking powder"	= 6,"Cherokee brand clothing"= 7, "Dodge Dakota"	= 12,"Eskimo pies"	= 13,	"Ford Apache"	=14,"Indian motocycle" = 15,"Indian Spirit air fresheners" = 16,"Jeep Cherokee"	= 17,"Land O'Lakes products (e.g., butter)"	=18, "Minnetonka moccasins"	= 19,"Mohave clothing"	= 20,"Mutual of Omaha insurance"	=22,"Narragansett beer" = 23, "Oneida silverware"	= 24, "Pontiac cars"	= 25,"Red Man snuff or chewing tobacco"	= 26,"Smokin' Joes cigars"	= 28,"Sue Bee honey" = 29,"Tootsie Roll pops"	= 31,"Toyota Tacoma"	= 32,"Umpqua dairy products (e.g., ice cream)"	= 34, "Winnebago vehicle (e.g., RV)" = 35)
+#StudyTwoData$FamProducts <- as.numeric(StudyTwoData$FamProducts)
+
+StudyTwoData$PlayedSportTeam <- dplyr::recode(StudyTwoData$PlayedSportTeam,"No" = 0, "Yes" = 1)
+StudyTwoData$PlayedSportTeam <- as.numeric(StudyTwoData$PlayedSportTeam)
+
+StudyTwoData$CommunitySportTeam <- dplyr::recode(StudyTwoData$CommunitySportTeam,"No" = 0, "Yes" = 1)
+StudyTwoData$CommunitySportTeam <- as.numeric(StudyTwoData$CommunitySportTeam)
+
+StudyTwoData$FanSportTeam <- dplyr::recode(StudyTwoData$FanSportTeam,"No" = 0, "Yes" = 1)
+StudyTwoData$FanSportTeam <- as.numeric(StudyTwoData$FanSportTeam)
+
+StudyTwoData$Spiritualpractice <- dplyr::recode(StudyTwoData$Spiritualpractice,"No" = 0, "Yes" = 1)
+StudyTwoData$Spiritualpractice <- as.numeric(StudyTwoData$Spiritualpractice)
+
+StudyTwoData$NativeClothing <- dplyr::recode(StudyTwoData$NativeClothing,"No" = 0, "Yes" = 1)
+StudyTwoData$NativeClothing <- as.numeric(StudyTwoData$NativeClothing)
+
+StudyTwoData$CowboyandIndianPlay <- dplyr::recode(StudyTwoData$CowboyandIndianPlay,"No" = 0, "Yes" = 1)
+StudyTwoData$CowboyandIndianPlay <- as.numeric(StudyTwoData$CowboyandIndianPlay)
+
+StudyTwoData$Invisibility_Invisibility_1 <- dplyr::recode(StudyTwoData$Invisibility_Invisibility_1,"Never" = 1, "Rarely" = 2, "Sometimes" = 3, "Often" = 4, "Very Often" = 5)
+StudyTwoData$Invisibility_Invisibility_1 <- as.numeric(StudyTwoData$Invisibility_Invisibility_1)
+
+StudyTwoData$Invisibility_Invisibility_2 <- dplyr::recode(StudyTwoData$Invisibility_Invisibility_2,"Never" = 1, "Rarely" = 2, "Sometimes" = 3, "Often" = 4, "Very Often" = 5)
+StudyTwoData$Invisibility_Invisibility_2 <- as.numeric(StudyTwoData$Invisibility_Invisibility_2)
+
+StudyTwoData$Invisibility_Invisibility_3 <- dplyr::recode(StudyTwoData$Invisibility_Invisibility_3,"Never" = 1, "Rarely" = 2, "Sometimes" = 3, "Often" = 4, "Very Often" = 5)
+StudyTwoData$Invisibility_Invisibility_3 <- as.numeric(StudyTwoData$Invisibility_Invisibility_3)
+
+StudyTwoData$Invisibility_Invisibility_4 <- dplyr::recode(StudyTwoData$Invisibility_Invisibility_4,"Never" = 1, "Rarely" = 2, "Sometimes" = 3, "Often" = 4, "Very Often" = 5)
+StudyTwoData$Invisibility_Invisibility_4 <- as.numeric(StudyTwoData$Invisibility_Invisibility_4)
+
+StudyTwoData$Invisibility_Invisibility_5 <- dplyr::recode(StudyTwoData$Invisibility_Invisibility_5,"Never" = 1, "Rarely" = 2, "Sometimes" = 3, "Often" = 4, "Very Often" = 5)
+StudyTwoData$Invisibility_Invisibility_5 <- as.numeric(StudyTwoData$Invisibility_Invisibility_5)
+
+StudyTwoData$Invisibility_Invisibility_6 <- dplyr::recode(StudyTwoData$Invisibility_Invisibility_6,"Never" = 1, "Rarely" = 2, "Sometimes" = 3, "Often" = 4, "Very Often" = 5)
+StudyTwoData$Invisibility_Invisibility_6 <- as.numeric(StudyTwoData$Invisibility_Invisibility_6)
+
+StudyTwoData$Invisibility_Invisibility_7 <- dplyr::recode(StudyTwoData$Invisibility_Invisibility_7,"Never" = 1, "Rarely" = 2, "Sometimes" = 3, "Often" = 4, "Very Often" = 5)
+StudyTwoData$Invisibility_Invisibility_7 <- as.numeric(StudyTwoData$Invisibility_Invisibility_7)
+
+StudyTwoData$Invisibility_Invisibility_8 <- dplyr::recode(StudyTwoData$Invisibility_Invisibility_8,"Never" = 1, "Rarely" = 2, "Sometimes" = 3, "Often" = 4, "Very Often" = 5)
+StudyTwoData$Invisibility_Invisibility_8 <- as.numeric(StudyTwoData$Invisibility_Invisibility_8)
+
+StudyTwoData$MCP_MCP_1 <- dplyr::recode(StudyTwoData$MCP_MCP_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$MCP_MCP_1 <- as.numeric(StudyTwoData$MCP_MCP_1)
+
+StudyTwoData$MCP_MCP_2 <- dplyr::recode(StudyTwoData$MCP_MCP_2,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$MCP_MCP_2 <- as.numeric(StudyTwoData$MCP_MCP_2)
+
+StudyTwoData$MCP_MCP_3 <- dplyr::recode(StudyTwoData$MCP_MCP_3,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$MCP_MCP_3 <- as.numeric(StudyTwoData$MCP_MCP_3)
+
+StudyTwoData$MCP_MCP_4 <- dplyr::recode(StudyTwoData$MCP_MCP_4,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$MCP_MCP_4 <- as.numeric(StudyTwoData$MCP_MCP_4)
+
+StudyTwoData$MCP_MCP_5 <- dplyr::recode(StudyTwoData$MCP_MCP_5,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$MCP_MCP_5 <- as.numeric(StudyTwoData$MCP_MCP_5)
+
+StudyTwoData$MCP_MCP_6 <- dplyr::recode(StudyTwoData$MCP_MCP_6,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$MCP_MCP_6 <- as.numeric(StudyTwoData$MCP_MCP_6)
+
+StudyTwoData$MCP_MCP_7 <- dplyr::recode(StudyTwoData$MCP_MCP_7,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$MCP_MCP_7 <- as.numeric(StudyTwoData$MCP_MCP_7)
+
+StudyTwoData$MCP_MCP_8 <- dplyr::recode(StudyTwoData$MCP_MCP_8,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$MCP_MCP_8 <- as.numeric(StudyTwoData$MCP_MCP_8)
+
+StudyTwoData$MCP_MCP_9 <- dplyr::recode(StudyTwoData$MCP_MCP_9,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$MCP_MCP_9 <- as.numeric(StudyTwoData$MCP_MCP_9)
+
+StudyTwoData$MCP_MCP_10 <- dplyr::recode(StudyTwoData$MCP_MCP_10,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$MCP_MCP_10 <- as.numeric(StudyTwoData$MCP_MCP_10)
+
+StudyTwoData$RacismMini_RacismMini_1 <- dplyr::recode(StudyTwoData$RacismMini_RacismMini_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$RacismMini_RacismMini_1 <- as.numeric(StudyTwoData$RacismMini_RacismMini_1)
+StudyTwoData$RacismMini_RacismMini_2 <- dplyr::recode(StudyTwoData$RacismMini_RacismMini_2,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$RacismMini_RacismMini_2 <- as.numeric(StudyTwoData$RacismMini_RacismMini_2)
+StudyTwoData$RacismMini_RacismMini_3 <- dplyr::recode(StudyTwoData$RacismMini_RacismMini_3,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$RacismMini_RacismMini_3 <- as.numeric(StudyTwoData$RacismMini_RacismMini_3)
+StudyTwoData$RacismMini_RacismMini_4 <- dplyr::recode(StudyTwoData$RacismMini_RacismMini_4,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$RacismMini_RacismMini_4 <- as.numeric(StudyTwoData$RacismMini_RacismMini_4)
+StudyTwoData$RacismMini_RacismMini_5 <- dplyr::recode(StudyTwoData$RacismMini_RacismMini_5,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$RacismMini_RacismMini_5 <- as.numeric(StudyTwoData$RacismMini_RacismMini_5)
+StudyTwoData$RacismMini_RacismMini_6 <- dplyr::recode(StudyTwoData$RacismMini_RacismMini_6,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$RacismMini_RacismMini_6 <- as.numeric(StudyTwoData$RacismMini_RacismMini_6)
+StudyTwoData$RacismMini_RacismMini_7 <- dplyr::recode(StudyTwoData$RacismMini_RacismMini_7,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$RacismMini_RacismMini_7 <- as.numeric(StudyTwoData$RacismMini_RacismMini_7)
+StudyTwoData$RacismMini_RacismMini_8 <- dplyr::recode(StudyTwoData$RacismMini_RacismMini_8,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$RacismMini_RacismMini_8 <- as.numeric(StudyTwoData$RacismMini_RacismMini_8)
+StudyTwoData$RacismMini_RacismMini_9 <- dplyr::recode(StudyTwoData$RacismMini_RacismMini_9,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$RacismMini_RacismMini_9 <- as.numeric(StudyTwoData$RacismMini_RacismMini_9)
+StudyTwoData$RacismMini_RacismMini_10 <- dplyr::recode(StudyTwoData$RacismMini_RacismMini_10,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$RacismMini_RacismMini_10 <- as.numeric(StudyTwoData$RacismMini_RacismMini_10)
+
+StudyTwoData$Stereotyping_Stereotyping_1 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_1,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_1 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_1)
+
+StudyTwoData$Stereotyping_Stereotyping_2<- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_2,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_2 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_2)
+
+StudyTwoData$Stereotyping_Stereotyping_3 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_3,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_3 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_3)
+
+StudyTwoData$Stereotyping_Stereotyping_4 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_4,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_4 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_4)
+
+StudyTwoData$Stereotyping_Stereotyping_5 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_5,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_5 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_5)
+
+StudyTwoData$Stereotyping_Stereotyping_6 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_6,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_6 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_6)
+
+StudyTwoData$Stereotyping_Stereotyping_7 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_7,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_7 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_7)
+
+StudyTwoData$Stereotyping_Stereotyping_8 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_8,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_8 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_8)
+
+StudyTwoData$Stereotyping_Stereotyping_9 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_9,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_9 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_9)
+
+StudyTwoData$Stereotyping_Stereotyping_10 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_10,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_10 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_10)
+
+StudyTwoData$Stereotyping_Stereotyping_11 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_11,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_11 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_11)
+
+StudyTwoData$Stereotyping_Stereotyping_12<- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_12,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_12 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_12)
+
+StudyTwoData$Stereotyping_Stereotyping_13 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_13,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_13 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_13)
+
+StudyTwoData$Stereotyping_Stereotyping_14 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_14,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_14 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_14)
+
+StudyTwoData$Stereotyping_Stereotyping_15 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_15,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_15 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_15)
+
+StudyTwoData$Stereotyping_Stereotyping_17 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_17,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_17 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_17)
+
+StudyTwoData$Stereotyping_Stereotyping_18 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_18,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_18 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_18)
+
+StudyTwoData$Stereotyping_Stereotyping_19 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_19,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_19 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_19)
+
+StudyTwoData$Stereotyping_Stereotyping_20 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_20,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_20 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_20)
+
+StudyTwoData$Stereotyping_Stereotyping_21 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_21,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_21 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_21)
+
+StudyTwoData$Stereotyping_Stereotyping_22 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_22,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_22 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_22)
+
+StudyTwoData$Stereotyping_Stereotyping_23 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_23,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_23 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_23)
+
+StudyTwoData$Stereotyping_Stereotyping_24 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_24,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_24 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_24)
+
+StudyTwoData$Stereotyping_Stereotyping_25 <- dplyr::recode(StudyTwoData$Stereotyping_Stereotyping_25,"Extremely Problematic" = 1, "Problematic" = 2, "Somewhat Problematic" = 3, "Neither Problematic nor Acceptable" = 4, "Somewhat Acceptable" = 5, "Acceptable" = 6,"Extremely Acceptable" = 7)
+StudyTwoData$Stereotyping_Stereotyping_25 <- as.numeric(StudyTwoData$Stereotyping_Stereotyping_25)
+
+StudyTwoData$CultRacism_CultRacism_1 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_1 <- as.numeric(StudyTwoData$CultRacism_CultRacism_1)
+StudyTwoData$CultRacism_CultRacism_2 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_2,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_2 <- as.numeric(StudyTwoData$CultRacism_CultRacism_2)
+StudyTwoData$CultRacism_CultRacism_3 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_3,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_3 <- as.numeric(StudyTwoData$CultRacism_CultRacism_3)
+StudyTwoData$CultRacism_CultRacism_4 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_4,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_4 <- as.numeric(StudyTwoData$CultRacism_CultRacism_4)
+StudyTwoData$CultRacism_CultRacism_5 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_5,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_5 <- as.numeric(StudyTwoData$CultRacism_CultRacism_5)
+StudyTwoData$CultRacism_CultRacism_6 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_6,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_6 <- as.numeric(StudyTwoData$CultRacism_CultRacism_6)
+StudyTwoData$CultRacism_CultRacism_7 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_7,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_7 <- as.numeric(StudyTwoData$CultRacism_CultRacism_7)
+StudyTwoData$CultRacism_CultRacism_8 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_8,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_8 <- as.numeric(StudyTwoData$CultRacism_CultRacism_8)
+StudyTwoData$CultRacism_CultRacism_9 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_9,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_9 <- as.numeric(StudyTwoData$CultRacism_CultRacism_9)
+StudyTwoData$CultRacism_CultRacism_10 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_10,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_10 <- as.numeric(StudyTwoData$CultRacism_CultRacism_10)
+StudyTwoData$CultRacism_CultRacism_11 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_11,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_11 <- as.numeric(StudyTwoData$CultRacism_CultRacism_11)
+StudyTwoData$CultRacism_CultRacism_12 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_12,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_12 <- as.numeric(StudyTwoData$CultRacism_CultRacism_12)
+StudyTwoData$CultRacism_CultRacism_13 <- dplyr::recode(StudyTwoData$CultRacism_CultRacism_13,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_CultRacism_13 <- as.numeric(StudyTwoData$CultRacism_CultRacism_13)
+
+StudyTwoData$CultRacism_Conflict_1 <- dplyr::recode(StudyTwoData$CultRacism_Conflict_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_Conflict_1 <- as.numeric(StudyTwoData$CultRacism_Conflict_1)
+StudyTwoData$CultRacism_Conflict_2 <- dplyr::recode(StudyTwoData$CultRacism_Conflict_2,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_Conflict_2 <- as.numeric(StudyTwoData$CultRacism_Conflict_2)
+StudyTwoData$CultRacism_Conflict_3 <- dplyr::recode(StudyTwoData$CultRacism_Conflict_3,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$CultRacism_Conflict_3 <- as.numeric(StudyTwoData$CultRacism_Conflict_3)
+
+StudyTwoData$ContempKnow_1 <- dplyr::recode(StudyTwoData$ContempKnow_1,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$ContempKnow_1 <- as.numeric(StudyTwoData$ContempKnow_1)
+StudyTwoData$ContempKnow_2 <- dplyr::recode(StudyTwoData$ContempKnow_2,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$ContempKnow_2 <- as.numeric(StudyTwoData$ContempKnow_2)
+StudyTwoData$ContempKnow_3 <- dplyr::recode(StudyTwoData$ContempKnow_3,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$ContempKnow_3 <- as.numeric(StudyTwoData$ContempKnow_3)
+StudyTwoData$ContempKnow_4 <- dplyr::recode(StudyTwoData$ContempKnow_4,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$ContempKnow_4 <- as.numeric(StudyTwoData$ContempKnow_4)
+StudyTwoData$ContempKnow_5 <- dplyr::recode(StudyTwoData$ContempKnow_5,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$ContempKnow_5 <- as.numeric(StudyTwoData$ContempKnow_5)
+StudyTwoData$ContempKnow_6 <- dplyr::recode(StudyTwoData$ContempKnow_6,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$ContempKnow_6 <- as.numeric(StudyTwoData$ContempKnow_6)
+StudyTwoData$ContempKnow_7 <- dplyr::recode(StudyTwoData$ContempKnow_7,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$ContempKnow_7 <- as.numeric(StudyTwoData$ContempKnow_7)
+StudyTwoData$ContempKnow_8 <- dplyr::recode(StudyTwoData$ContempKnow_8,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$ContempKnow_8 <- as.numeric(StudyTwoData$ContempKnow_8)
+StudyTwoData$ContempKnow_9 <- dplyr::recode(StudyTwoData$ContempKnow_9,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$ContempKnow_9 <- as.numeric(StudyTwoData$ContempKnow_9)
+StudyTwoData$ContempKnow_10 <- dplyr::recode(StudyTwoData$ContempKnow_10,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$ContempKnow_10 <- as.numeric(StudyTwoData$ContempKnow_10)
+
+
+StudyTwoData$HistoricKnow_1 <- dplyr::recode(StudyTwoData$HistoricKnow_1,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$HistoricKnow_1 <- as.numeric(StudyTwoData$HistoricKnow_1)
+StudyTwoData$HistoricKnow_2 <- dplyr::recode(StudyTwoData$HistoricKnow_2,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$HistoricKnow_2 <- as.numeric(StudyTwoData$HistoricKnow_2)
+StudyTwoData$HistoricKnow_3 <- dplyr::recode(StudyTwoData$HistoricKnow_3,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$HistoricKnow_3 <- as.numeric(StudyTwoData$HistoricKnow_3)
+StudyTwoData$HistoricKnow_4 <- dplyr::recode(StudyTwoData$HistoricKnow_4,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$HistoricKnow_4 <- as.numeric(StudyTwoData$HistoricKnow_4)
+StudyTwoData$HistoricKnow_5 <- dplyr::recode(StudyTwoData$HistoricKnow_5,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$HistoricKnow_5 <- as.numeric(StudyTwoData$HistoricKnow_5)
+StudyTwoData$HistoricKnow_6 <- dplyr::recode(StudyTwoData$HistoricKnow_6,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$HistoricKnow_6 <- as.numeric(StudyTwoData$HistoricKnow_6)
+StudyTwoData$HistoricKnow_7 <- dplyr::recode(StudyTwoData$HistoricKnow_7,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$HistoricKnow_7 <- as.numeric(StudyTwoData$HistoricKnow_7)
+StudyTwoData$HistoricKnow_8 <- dplyr::recode(StudyTwoData$HistoricKnow_8,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$HistoricKnow_8 <- as.numeric(StudyTwoData$HistoricKnow_8)
+StudyTwoData$HistoricKnow_9 <- dplyr::recode(StudyTwoData$HistoricKnow_9,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$HistoricKnow_9 <- as.numeric(StudyTwoData$HistoricKnow_9)
+StudyTwoData$HistoricKnow_10 <- dplyr::recode(StudyTwoData$HistoricKnow_10,"True" = 1, "False" = 2, "I don't know." = 3)
+StudyTwoData$HistoricKnow_10 <- as.numeric(StudyTwoData$HistoricKnow_10)
+
+
+
