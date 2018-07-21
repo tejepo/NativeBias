@@ -769,8 +769,12 @@ StudyTwoData$Leuisure <- as.numeric(StudyTwoData$Leuisure)
 StudyTwoData$Speaking <- dplyr::recode(StudyTwoData$Speaking, "Daily" = 1, "4-6 times a week" = 2, "2-3 times a week" = 3, "Once a week" = 4, "A few times a month" = 5, "Once a month"= 6, "Once a year"= 7, "It has been over a year since I last spoke with one of the Native American people I know" = 8, "Not Applicable"= 99)
 StudyTwoData$Speaking <- as.numeric(StudyTwoData$Speaking)
 
-#StudyTwoData$Share_Share_1 <- dplyr::recode(StudyTwoData$Share_Share_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7, "N/A"= 99)
-#StudyTwoData$Share_Share_1 <- as.numeric(StudyTwoData$Share_Share_1)
+StudyTwoData$Share_Share_1 <- dplyr::recode(StudyTwoData$Share_Share_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7, "N/A"= 99)
+StudyTwoData$Share_Share_1 <- as.numeric(StudyTwoData$Share_Share_1)
+StudyTwoData$Share_Share_2 <- dplyr::recode(StudyTwoData$Share_Share_2,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7, "N/A"= 99)
+StudyTwoData$Share_Share_2 <- as.numeric(StudyTwoData$Share_Share_2)
+StudyTwoData$Share_Share_3 <- dplyr::recode(StudyTwoData$Share_Share_3,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7, "N/A"= 99)
+StudyTwoData$Share_Share_3 <- as.numeric(StudyTwoData$Share_Share_3)
 
 StudyTwoData[,161]
 as.numeric(StudyTwoData[,161])
@@ -1029,5 +1033,137 @@ StudyTwoData$HistoricKnow_9 <- as.numeric(StudyTwoData$HistoricKnow_9)
 StudyTwoData$HistoricKnow_10 <- dplyr::recode(StudyTwoData$HistoricKnow_10,"True" = 1, "False" = 2, "I don't know." = 3)
 StudyTwoData$HistoricKnow_10 <- as.numeric(StudyTwoData$HistoricKnow_10)
 
+StudyTwoData$StereotypeEndorse_Stereotyping_1 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_1,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_1 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_1)
+StudyTwoData$StereotypeEndorse_Stereotyping_2 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_2,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_2 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_2)
+StudyTwoData$StereotypeEndorse_Stereotyping_3 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_3,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_3 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_3)
+StudyTwoData$StereotypeEndorse_Stereotyping_4 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_4,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_4 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_4)
+StudyTwoData$StereotypeEndorse_Stereotyping_5 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_5,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_5 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_5)
+StudyTwoData$StereotypeEndorse_Stereotyping_6 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_6,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_6 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_6)
+StudyTwoData$StereotypeEndorse_Stereotyping_7 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_7,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_7 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_7)
+StudyTwoData$StereotypeEndorse_Stereotyping_8 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_8,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_8 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_8)
+StudyTwoData$StereotypeEndorse_Stereotyping_9 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_9,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_9 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_9)
+StudyTwoData$StereotypeEndorse_Stereotyping_10 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_10,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_10 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_10)
+StudyTwoData$StereotypeEndorse_Stereotyping_11 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_11,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_11 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_11)
+StudyTwoData$StereotypeEndorse_Stereotyping_12 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_12,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_12 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_12)
+StudyTwoData$StereotypeEndorse_Stereotyping_13 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_13,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_13 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_13)
+StudyTwoData$StereotypeEndorse_Stereotyping_14 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_14,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_14 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_14)
+StudyTwoData$StereotypeEndorse_Stereotyping_15 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_15,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_15 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_15)
+StudyTwoData$StereotypeEndorse_Stereotyping_17 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_17,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_17 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_17 )
+StudyTwoData$StereotypeEndorse_Stereotyping_18 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_18,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_18 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_18)
+StudyTwoData$StereotypeEndorse_Stereotyping_19 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_19,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_19 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_19)
+StudyTwoData$StereotypeEndorse_Stereotyping_20 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_20,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_20 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_20)
+StudyTwoData$StereotypeEndorse_Stereotyping_21 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_21,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_21 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_21)
+StudyTwoData$StereotypeEndorse_Stereotyping_22 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_22,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_22 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_22)
+StudyTwoData$StereotypeEndorse_Stereotyping_23 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_23,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_23 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_23)
+StudyTwoData$StereotypeEndorse_Stereotyping_24 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_24,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_24 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_24)
+StudyTwoData$StereotypeEndorse_Stereotyping_25 <- dplyr::recode(StudyTwoData$StereotypeEndorse_Stereotyping_25,"Definitely not true at all" = 1, "Not True" = 2, "Somewhat not True" = 3, "Neither True nor Untrue" = 4, "Somewhat True" = 5, "True" = 6,"Definitely True" = 7)
+StudyTwoData$StereotypeEndorse_Stereotyping_25 <- as.numeric(StudyTwoData$StereotypeEndorse_Stereotyping_25)
 
+StudyTwoData[,364]
+as.numeric(StudyTwoData[,364])
+StudyTwoData[,364] <- as.numeric(levels(StudyTwoData[,364]))[StudyTwoData[,364]]
 
+StudyTwoData[,365]
+as.numeric(StudyTwoData[,365])
+StudyTwoData[,365] <- as.numeric(levels(StudyTwoData[,365]))[StudyTwoData[,365]]
+
+StudyTwoData[,366]
+as.numeric(StudyTwoData[,366])
+StudyTwoData[,366] <- as.numeric(levels(StudyTwoData[,366]))[StudyTwoData[,366]]
+
+StudyTwoData[,367]
+as.numeric(StudyTwoData[,367])
+StudyTwoData[,367] <- as.numeric(levels(StudyTwoData[,367]))[StudyTwoData[,367]]
+
+StudyTwoData$ContempInvisibility_ContempInvisibility_1 <- dplyr::recode(StudyTwoData$ContempInvisibility_ContempInvisibility_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$ContempInvisibility_ContempInvisibility_1 <- as.numeric(StudyTwoData$ContempInvisibility_ContempInvisibility_1)
+StudyTwoData$ContempInvisibility_ContempInvisibility_2 <- dplyr::recode(StudyTwoData$ContempInvisibility_ContempInvisibility_2,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$ContempInvisibility_ContempInvisibility_2 <- as.numeric(StudyTwoData$ContempInvisibility_ContempInvisibility_2)
+StudyTwoData$ContempInvisibility_ContempInvisibility_3 <- dplyr::recode(StudyTwoData$ContempInvisibility_ContempInvisibility_3,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$ContempInvisibility_ContempInvisibility_3 <- as.numeric(StudyTwoData$ContempInvisibility_ContempInvisibility_3)
+StudyTwoData$ContempInvisibility_ContempInvisibility_4 <- dplyr::recode(StudyTwoData$ContempInvisibility_ContempInvisibility_4,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$ContempInvisibility_ContempInvisibility_4 <- as.numeric(StudyTwoData$ContempInvisibility_ContempInvisibility_4)
+StudyTwoData$ContempInvisibility_ContempInvisibility_5 <- dplyr::recode(StudyTwoData$ContempInvisibility_ContempInvisibility_5,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$ContempInvisibility_ContempInvisibility_5 <- as.numeric(StudyTwoData$ContempInvisibility_ContempInvisibility_5)
+StudyTwoData$ContempInvisibility_ContempInvisibility_6 <- dplyr::recode(StudyTwoData$ContempInvisibility_ContempInvisibility_6,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$ContempInvisibility_ContempInvisibility_6 <- as.numeric(StudyTwoData$ContempInvisibility_ContempInvisibility_6)
+StudyTwoData$ContempInvisibility_ContempInvisibility_7 <- dplyr::recode(StudyTwoData$ContempInvisibility_ContempInvisibility_7,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat disagree" = 3, "Neither agree nor disagree" = 4, "Somewhat agree" = 5, "Agree" = 6,"Strongly agree" = 7)
+StudyTwoData$ContempInvisibility_ContempInvisibility_7 <- as.numeric(StudyTwoData$ContempInvisibility_ContempInvisibility_7)
+
+StudyTwoData[,375]
+as.numeric(StudyTwoData[,375])
+StudyTwoData[,375] <- as.numeric(levels(StudyTwoData[,375]))[StudyTwoData[,375]]
+
+StudyTwoData[,376]
+as.numeric(StudyTwoData[,376])
+StudyTwoData[,376] <- as.numeric(levels(StudyTwoData[,376]))[StudyTwoData[,376]]
+
+StudyTwoData[,377]
+as.numeric(StudyTwoData[,377])
+StudyTwoData[,377] <- as.numeric(levels(StudyTwoData[,377]))[StudyTwoData[,377]]
+
+StudyTwoData[,378]
+as.numeric(StudyTwoData[,378])
+StudyTwoData[,378] <- as.numeric(levels(StudyTwoData[,378]))[StudyTwoData[,378]]
+
+StudyTwoData$Guilt_PastGuilt_1 <- dplyr::recode(StudyTwoData$Guilt_PastGuilt_1,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$Guilt_PastGuilt_1 <- as.numeric(StudyTwoData$Guilt_PastGuilt_1)
+StudyTwoData$Guilt_PastGuilt_2 <- dplyr::recode(StudyTwoData$Guilt_PastGuilt_2,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$Guilt_PastGuilt_2 <- as.numeric(StudyTwoData$Guilt_PastGuilt_2)
+StudyTwoData$Guilt_PastGuilt_4 <- dplyr::recode(StudyTwoData$Guilt_PastGuilt_4,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$Guilt_PastGuilt_4 <- as.numeric(StudyTwoData$Guilt_PastGuilt_4)
+StudyTwoData$Guilt_PastGuilt_5 <- dplyr::recode(StudyTwoData$Guilt_PastGuilt_5,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$Guilt_PastGuilt_5 <- as.numeric(StudyTwoData$Guilt_PastGuilt_5)
+StudyTwoData$Guilt_PastGuilt_3 <- dplyr::recode(StudyTwoData$Guilt_PastGuilt_3,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$Guilt_PastGuilt_3 <- as.numeric(StudyTwoData$Guilt_PastGuilt_3)
+
+StudyTwoData$Guilt_ContempGuilt_6 <- dplyr::recode(StudyTwoData$Guilt_ContempGuilt_6,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$Guilt_ContempGuilt_6 <- as.numeric(StudyTwoData$Guilt_ContempGuilt_6)
+StudyTwoData$Guilt_ContempGuilt_7 <- dplyr::recode(StudyTwoData$Guilt_ContempGuilt_7,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$Guilt_ContempGuilt_7 <- as.numeric(StudyTwoData$Guilt_ContempGuilt_7)
+StudyTwoData$Guilt_ContempGuilt_8 <- dplyr::recode(StudyTwoData$Guilt_ContempGuilt_8,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$Guilt_ContempGuilt_8 <- as.numeric(StudyTwoData$Guilt_ContempGuilt_8)
+StudyTwoData$Guilt_ContempGuilt_9 <- dplyr::recode(StudyTwoData$Guilt_ContempGuilt_9,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$Guilt_ContempGuilt_9 <- as.numeric(StudyTwoData$Guilt_ContempGuilt_9)
+StudyTwoData$Guilt_ContempGuilt_10 <- dplyr::recode(StudyTwoData$Guilt_ContempGuilt_10,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagree nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+StudyTwoData$Guilt_ContempGuilt_10 <- as.numeric(StudyTwoData$Guilt_ContempGuilt_10)
+
+StudyTwoData$Gender <- dplyr::recode(StudyTwoData$Gender,"Man" = 1, "Woman" = 2, "Transgender man" = 3, "Transgender woman" = 4, "Click to write Choice 7" = 5, "Genderqueer" = 6,"Another gender identity" = 7)
+StudyTwoData$Gender<- as.numeric(StudyTwoData$Gender)
+
+StudyTwoData$BorninUS<- dplyr::recode(StudyTwoData$BorninUS,"No" = 0, "Yes" = 1)
+StudyTwoData$BorninUS <- as.numeric(StudyTwoData$BorninUS)
+
+StudyTwoData$FatherUSBorn <- dplyr::recode(StudyTwoData$FatherUSBorn,"No" = 0, "Yes" = 1, "Unsure/Not applicable" = 3)
+StudyTwoData$FatherUSBorn <- as.numeric(StudyTwoData$FatherUSBorn)
+
+StudyTwoData$MotherUSBorn <- dplyr::recode(StudyTwoData$MotherUSBorn,"No" = 0, "Yes" = 1, "Unsure/Not applicable" = 3)
+StudyTwoData$MotherUSBorn <- as.numeric(StudyTwoData$MotherUSBorn)
+
+StudyTwoData$College <- dplyr::recode(StudyTwoData$College,"No" = 0, "Yes" = 1)
+StudyTwoData$College <- as.numeric(StudyTwoData$College)
+
+str(StudyTwoData)
