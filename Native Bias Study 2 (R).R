@@ -1167,6 +1167,7 @@ StudyTwoData$MotherUSBorn <- as.numeric(StudyTwoData$MotherUSBorn)
 StudyTwoData$College <- dplyr::recode(StudyTwoData$College,"No" = 0, "Yes" = 1)
 StudyTwoData$College <- as.numeric(StudyTwoData$College)
 
+#Begin Analysis
 str(StudyTwoData)
 
 StudyTwoData.y <- StudyTwoData %>%
@@ -1178,7 +1179,6 @@ res <- cor(my_num_data, use = "complete.obs")
 round(res,2)
 
 library(Hmisc)
-
 res2 <- rcorr(as.matrix(my_num_data), type = c("pearson","spearman"))
 res2
 
@@ -1215,7 +1215,7 @@ symnum(res, abbr.colnames = FALSE)
 library(corrplot)
 
 #This is a nice visual aide but is better for a subset of the data
-corrplot(res, type = "upper", order = "hclust", 
+plot1 <- corrplot(res, type = "upper", order = "hclust", 
          tl.col = "black", tl.srt = 45)
 
 #Positive correlations are displayed in blue and negative correlations in red color. Color intensity and the size of the circle are proportional to the correlation coefficients. In the right side of the correlogram, the legend color shows the correlation coefficients and the corresponding colors.
@@ -1233,11 +1233,10 @@ install.packages("PerformanceAnalytics")
 library("PerformanceAnalytics")
 
 chart <- chart.Correlation(my_num_data, histogram=TRUE, pch=19)
-chart <- as.list(chart)
 
-plist <-list(c(chart, upper.plot))
+plist <- list(chart, plot1)
 
-for (i in seq(1, length(chart))) {
+for (i in seq(1, length(plist))) {
   pdf(paste0("Performance Analysis #",i,".pdf"), 7, 5)
   grid.arrange(grobs=chart[i:(i)], 
                ncol=1, left="Participant Rating", bottom="Condition")
