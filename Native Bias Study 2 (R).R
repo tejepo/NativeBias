@@ -733,6 +733,7 @@ StudyTwoData$AntiSov_AntiSov_4 <- as.numeric(StudyTwoData$AntiSov_AntiSov_4)
 StudyTwoData$AntiSov_AntiSov_5 <- dplyr::recode(StudyTwoData$AntiSov_AntiSov_5,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
 StudyTwoData$AntiSov_AntiSov_5 <- as.numeric(StudyTwoData$AntiSov_AntiSov_5)
 StudyTwoData$AntiSov_AntiSov_6 <- dplyr::recode(StudyTwoData$AntiSov_AntiSov_6,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+
 StudyTwoData$AntiSov_AntiSov_6 <- as.numeric(StudyTwoData$AntiSov_AntiSov_6)
 
 StudyTwoData[,144]
@@ -1167,3 +1168,82 @@ StudyTwoData$College <- dplyr::recode(StudyTwoData$College,"No" = 0, "Yes" = 1)
 StudyTwoData$College <- as.numeric(StudyTwoData$College)
 
 str(StudyTwoData)
+
+StudyTwoData.y <- StudyTwoData %>%
+  filter(Consent == "I agree to participate in this study.")
+
+my_num_data <- StudyTwoData.y[, sapply(StudyTwoData.y, is.numeric)]
+
+res <- cor(my_num_data, use = "complete.obs")
+round(res,2)
+
+library(Hmisc)
+
+res2 <- rcorr(as.matrix(my_num_data), type = c("pearson","spearman"))
+res2
+
+#r values 
+res2$r
+
+#p values
+res2$P
+
+# ++++++++++++++++++++++++++++
+# flattenCorrMatrix
+# ++++++++++++++++++++++++++++
+# cormat : matrix of the correlation coefficients
+# pmat : matrix of the correlation p-values
+flattenCorrMatrix <- function(cormat, pmat) {
+  ut <- upper.tri(cormat)
+  data.frame(
+    row = rownames(cormat)[row(cormat)[ut]],
+    column = rownames(cormat)[col(cormat)[ut]],
+    cor  =(cormat)[ut],
+    p = pmat[ut]
+  )
+}
+
+flattenCorrMatrix(res2$r, res2$P)
+
+#At this stage we can take what we have and look at the data and at relationships in the data. The following will be good for digging deeper on specific parts of the data set that we think are particularly interesting.
+
+
+#Number coding matrix
+symnum(res, abbr.colnames = FALSE)
+
+#install.packages("corrplot")
+library(corrplot)
+
+#This is a nice visual aide but is better for a subset of the data
+corrplot(res, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45)
+
+#Positive correlations are displayed in blue and negative correlations in red color. Color intensity and the size of the circle are proportional to the correlation coefficients. In the right side of the correlogram, the legend color shows the correlation coefficients and the corresponding colors.
+
+# Insignificant correlation are crossed
+corrplot(res2$r, type="upper", order="hclust", 
+         p.mat = res2$P, sig.level = 0.01, insig = "blank")
+# Insignificant correlations are leaved blank
+corrplot(res2$r, type="upper", order="hclust", 
+         p.mat = res2$P, sig.level = 0.01, insig = "blank")
+
+
+#another good visualizatiojn tool for a subset of the data
+install.packages("PerformanceAnalytics")
+library("PerformanceAnalytics")
+
+chart <- chart.Correlation(my_num_data, histogram=TRUE, pch=19)
+chart <- as.list(chart)
+
+plist <-list(c(chart, upper.plot))
+
+for (i in seq(1, length(chart))) {
+  pdf(paste0("Performance Analysis #",i,".pdf"), 7, 5)
+  grid.arrange(grobs=chart[i:(i)], 
+               ncol=1, left="Participant Rating", bottom="Condition")
+  dev.off()
+}
+
+#a heatmap that works well with subsetted data
+col<- colorRampPalette(c("blue", "white", "red"))(20)
+heatmap(x = res, col = col, symm = TRUE)
