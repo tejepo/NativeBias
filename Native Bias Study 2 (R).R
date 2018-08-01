@@ -1246,3 +1246,35 @@ for (i in seq(1, length(plist))) {
 #a heatmap that works well with subsetted data
 col<- colorRampPalette(c("blue", "white", "red"))(20)
 heatmap(x = res, col = col, symm = TRUE)
+
+#exporting to a high resolution plot
+#I haven't figured this code out yet so don't worry about running this
+
+install.packages("extrafont")
+library(extrafont)
+font_import() # this gets fonts installed anywhere on your computer, most commonly from MS Office install fonts. It takes a LONG while.
+
+x = 1:20
+y = x * 2
+
+#setwd('/Users/.../Folder/') # place to save the file - can be over-ridden by putting a path in the file = “ “ part of the functions below.
+
+pdf(file = map1, width = 12, height = 17, family = "Helvetica") # defaults to 7 x 7 inches
+plot(x, y, type = "l")
+dev.off()
+
+postscript("map1.eps", width = 12, height = 17, horizontal = FALSE, 
+            onefile = FALSE, paper = "special", colormodel = "cmyk", 
+            family = "Courier")
+            plot()
+            dev.off()
+            
+            bitmap("map1.pdf", height = 12, width = 17, units = 'cm', 
+            type = "tifflzw", res = 300)
+plot()
+dev.off()
+
+tiff("heatmap1.tiff", height = 12, width = 17, units = 'cm', 
+      compression = "lzw", res = 300)
+      plot(x,y)
+      dev.off()
