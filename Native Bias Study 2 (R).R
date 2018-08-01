@@ -13,7 +13,7 @@ str(StudyTwoData)
 StudyTwoData <- StudyTwoData[,-1:-17]
 
 #Created a new object with just the questions from the survey
-Questions <- StudyTwoData[1:2,]
+Questions <- StudyTwoData[1,] 
 View(Questions)
 str(Questions)
 Questions
@@ -1167,11 +1167,22 @@ StudyTwoData$MotherUSBorn <- as.numeric(StudyTwoData$MotherUSBorn)
 StudyTwoData$College <- dplyr::recode(StudyTwoData$College,"No" = 0, "Yes" = 1)
 StudyTwoData$College <- as.numeric(StudyTwoData$College)
 
+#add labels
+label(StudyTwoData[,1:417]) <- as.vector(Questions[1,])
+label(StudyTwoData)
+
+#remove a few variables
+StudyTwoData <- StudyTwoData[,-414:-417]
+
 #Begin Analysis
 str(StudyTwoData)
 
 StudyTwoData.y <- StudyTwoData %>%
   filter(Consent == "I agree to participate in this study.")
+
+StudyTwoData.y <- StudyTwoData.y[,-1]
+View(StudyTwoData.y)
+
 
 my_num_data <- StudyTwoData.y[, sapply(StudyTwoData.y, is.numeric)]
 
@@ -1184,9 +1195,11 @@ res2
 
 #r values 
 res2$r
+res2$r <- round(res2$r, 3)
 
 #p values
 res2$P
+res2$P <- round(res2$P, 3)
 
 # ++++++++++++++++++++++++++++
 # flattenCorrMatrix
@@ -1203,7 +1216,14 @@ flattenCorrMatrix <- function(cormat, pmat) {
   )
 }
 
-flattenCorrMatrix(res2$r, res2$P)
+matrix1 <- flattenCorrMatrix(res2$r, res2$P)
+
+sig.matrix1 <- subset(matrix1, p < .051)
+
+#generate the files
+write.csv(res, file = "results.csv")
+write.csv(matrix1, file = "all cor with p.csv")
+write.csv(sig.matrix1, file = "Only sig cor.csv")
 
 #At this stage we can take what we have and look at the data and at relationships in the data. The following will be good for digging deeper on specific parts of the data set that we think are particularly interesting.
 
