@@ -14,7 +14,7 @@ str(StudyTwoData)
 StudyTwoData <- StudyTwoData[,-1:-17]
 
 #Created a new object with just the questions from the survey
-Questions <- StudyTwoData[1:2,]
+Questions <- StudyTwoData[1,] 
 View(Questions)
 str(Questions)
 Questions
@@ -734,6 +734,7 @@ StudyTwoData$AntiSov_AntiSov_4 <- as.numeric(StudyTwoData$AntiSov_AntiSov_4)
 StudyTwoData$AntiSov_AntiSov_5 <- dplyr::recode(StudyTwoData$AntiSov_AntiSov_5,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
 StudyTwoData$AntiSov_AntiSov_5 <- as.numeric(StudyTwoData$AntiSov_AntiSov_5)
 StudyTwoData$AntiSov_AntiSov_6 <- dplyr::recode(StudyTwoData$AntiSov_AntiSov_6,"Strongly Disagree" = 1, "Disagree" = 2, "Somewhat Disagree" = 3, "Neither Disagee nor Agree" = 4, "Somewhat Agree" = 5, "Agree" = 6,"Strongly Agree" = 7)
+
 StudyTwoData$AntiSov_AntiSov_6 <- as.numeric(StudyTwoData$AntiSov_AntiSov_6)
 
 StudyTwoData[,144]
@@ -1167,7 +1168,16 @@ StudyTwoData$MotherUSBorn <- as.numeric(StudyTwoData$MotherUSBorn)
 StudyTwoData$College <- dplyr::recode(StudyTwoData$College,"No" = 0, "Yes" = 1)
 StudyTwoData$College <- as.numeric(StudyTwoData$College)
 
+#add labels
+label(StudyTwoData[,1:417]) <- as.vector(Questions[1,])
+label(StudyTwoData)
+
+#remove a few variables
+StudyTwoData <- StudyTwoData[,-414:-417]
+
+#Begin Analysis
 str(StudyTwoData)
+<<<<<<< HEAD
 StudyTwoData.y <- StudyTwoData %>%
   filter(Consent == "I agree to participate in this study.")
 my_num_data <- StudyTwoData.y[, sapply(StudyTwoData.y, is.numeric)]
@@ -1181,6 +1191,33 @@ res2
 res2$r
 #p values
 res2$P
+=======
+
+StudyTwoData.y <- StudyTwoData %>%
+  filter(Consent == "I agree to participate in this study.")
+
+StudyTwoData.y <- StudyTwoData.y[,-1]
+View(StudyTwoData.y)
+
+
+my_num_data <- StudyTwoData.y[, sapply(StudyTwoData.y, is.numeric)]
+
+res <- cor(my_num_data, use = "complete.obs")
+round(res,2)
+
+library(Hmisc)
+res2 <- rcorr(as.matrix(my_num_data), type = c("pearson","spearman"))
+res2
+
+#r values 
+res2$r
+res2$r <- round(res2$r, 3)
+
+#p values
+res2$P
+res2$P <- round(res2$P, 3)
+
+>>>>>>> 2879f7bf24aa46ab9a9ac48d35f739b81632daa0
 # ++++++++++++++++++++++++++++
 # flattenCorrMatrix
 # ++++++++++++++++++++++++++++
@@ -1195,6 +1232,7 @@ flattenCorrMatrix <- function(cormat, pmat) {
     p = pmat[ut]
   )
 }
+<<<<<<< HEAD
 flattenCorrMatrix(res2$r, res2$P)
 install.packages("corrplot")
 library(corrplot)
@@ -1204,3 +1242,88 @@ upper.plot <- corrplot(res, type = "upper", order = "hclust",
 library("PerformanceAnalytics")
 chart <- chart.Correlation(my_num_data, histogram=TRUE, pch=19)
 
+=======
+
+matrix1 <- flattenCorrMatrix(res2$r, res2$P)
+
+sig.matrix1 <- subset(matrix1, p < .051)
+
+#generate the files
+write.csv(res, file = "results.csv")
+write.csv(matrix1, file = "all cor with p.csv")
+write.csv(sig.matrix1, file = "Only sig cor.csv")
+
+#At this stage we can take what we have and look at the data and at relationships in the data. The following will be good for digging deeper on specific parts of the data set that we think are particularly interesting.
+
+
+#Number coding matrix
+symnum(res, abbr.colnames = FALSE)
+
+#install.packages("corrplot")
+library(corrplot)
+
+#This is a nice visual aide but is better for a subset of the data
+plot1 <- corrplot(res, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45)
+
+#Positive correlations are displayed in blue and negative correlations in red color. Color intensity and the size of the circle are proportional to the correlation coefficients. In the right side of the correlogram, the legend color shows the correlation coefficients and the corresponding colors.
+
+# Insignificant correlation are crossed
+corrplot(res2$r, type="upper", order="hclust", 
+         p.mat = res2$P, sig.level = 0.01, insig = "blank")
+# Insignificant correlations are leaved blank
+corrplot(res2$r, type="upper", order="hclust", 
+         p.mat = res2$P, sig.level = 0.01, insig = "blank")
+
+
+#another good visualizatiojn tool for a subset of the data
+install.packages("PerformanceAnalytics")
+library("PerformanceAnalytics")
+
+chart <- chart.Correlation(my_num_data, histogram=TRUE, pch=19)
+
+plist <- list(chart, plot1)
+
+for (i in seq(1, length(plist))) {
+  pdf(paste0("Performance Analysis #",i,".pdf"), 7, 5)
+  grid.arrange(grobs=chart[i:(i)], 
+               ncol=1, left="Participant Rating", bottom="Condition")
+  dev.off()
+}
+
+#a heatmap that works well with subsetted data
+col<- colorRampPalette(c("blue", "white", "red"))(20)
+heatmap(x = res, col = col, symm = TRUE)
+
+#exporting to a high resolution plot
+#I haven't figured this code out yet so don't worry about running this
+
+install.packages("extrafont")
+library(extrafont)
+font_import() # this gets fonts installed anywhere on your computer, most commonly from MS Office install fonts. It takes a LONG while.
+
+x = 1:20
+y = x * 2
+
+#setwd('/Users/.../Folder/') # place to save the file - can be over-ridden by putting a path in the file = “ “ part of the functions below.
+
+pdf(file = map1, width = 12, height = 17, family = "Helvetica") # defaults to 7 x 7 inches
+plot(x, y, type = "l")
+dev.off()
+
+postscript("map1.eps", width = 12, height = 17, horizontal = FALSE, 
+            onefile = FALSE, paper = "special", colormodel = "cmyk", 
+            family = "Courier")
+            plot()
+            dev.off()
+            
+            bitmap("map1.pdf", height = 12, width = 17, units = 'cm', 
+            type = "tifflzw", res = 300)
+plot()
+dev.off()
+
+tiff("heatmap1.tiff", height = 12, width = 17, units = 'cm', 
+      compression = "lzw", res = 300)
+      plot(x,y)
+      dev.off()
+>>>>>>> 2879f7bf24aa46ab9a9ac48d35f739b81632daa0
