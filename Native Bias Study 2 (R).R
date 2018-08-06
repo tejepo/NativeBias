@@ -3,6 +3,7 @@ library(magrittr)
 
 #Set working directory
 setwd("~/Documents/GitHub/NativeBias")
+setwd("~/Desktop")
 
 #Load in Data
 StudyTwoData <- read.csv("Native Bias Study 2 (Names).csv")
@@ -1167,3 +1168,39 @@ StudyTwoData$College <- dplyr::recode(StudyTwoData$College,"No" = 0, "Yes" = 1)
 StudyTwoData$College <- as.numeric(StudyTwoData$College)
 
 str(StudyTwoData)
+StudyTwoData.y <- StudyTwoData %>%
+  filter(Consent == "I agree to participate in this study.")
+my_num_data <- StudyTwoData.y[, sapply(StudyTwoData.y, is.numeric)]
+res <- cor(my_num_data, use = "complete.obs")
+round(res,2)
+library(Hmisc)
+install.packages("Hmisc")
+res2 <- rcorr(as.matrix(my_num_data), type = c("pearson","spearman"))
+res2
+#r values
+res2$r
+#p values
+res2$P
+# ++++++++++++++++++++++++++++
+# flattenCorrMatrix
+# ++++++++++++++++++++++++++++
+# cormat : matrix of the correlation coefficients
+# pmat : matrix of the correlation p-values
+flattenCorrMatrix <- function(cormat, pmat) {
+  ut <- upper.tri(cormat)
+  data.frame(
+    row = rownames(cormat)[row(cormat)[ut]],
+    column = rownames(cormat)[col(cormat)[ut]],
+    cor  =(cormat)[ut],
+    p = pmat[ut]
+  )
+}
+flattenCorrMatrix(res2$r, res2$P)
+install.packages("corrplot")
+library(corrplot)
+#This is a nice visual aide but is better for a subset of the data
+upper.plot <- corrplot(res, type = "upper", order = "hclust",
+                       tl.col = "black", tl.srt = 45)
+library("PerformanceAnalytics")
+chart <- chart.Correlation(my_num_data, histogram=TRUE, pch=19)
+
