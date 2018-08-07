@@ -3,6 +3,7 @@ library(magrittr)
 
 #Set working directory
 setwd("~/Documents/GitHub/NativeBias")
+setwd("~/Desktop")
 
 #Load in Data
 StudyTwoData <- read.csv("Native Bias Study 2 (Names).csv")
@@ -1176,6 +1177,21 @@ StudyTwoData <- StudyTwoData[,-414:-417]
 
 #Begin Analysis
 str(StudyTwoData)
+<<<<<<< HEAD
+StudyTwoData.y <- StudyTwoData %>%
+  filter(Consent == "I agree to participate in this study.")
+my_num_data <- StudyTwoData.y[, sapply(StudyTwoData.y, is.numeric)]
+res <- cor(my_num_data, use = "complete.obs")
+round(res,2)
+library(Hmisc)
+install.packages("Hmisc")
+res2 <- rcorr(as.matrix(my_num_data), type = c("pearson","spearman"))
+res2
+#r values
+res2$r
+#p values
+res2$P
+=======
 
 StudyTwoData.y <- StudyTwoData %>%
   filter(Consent == "I agree to participate in this study.")
@@ -1201,6 +1217,7 @@ res2$r <- round(res2$r, 3)
 res2$P
 res2$P <- round(res2$P, 3)
 
+>>>>>>> 2879f7bf24aa46ab9a9ac48d35f739b81632daa0
 # ++++++++++++++++++++++++++++
 # flattenCorrMatrix
 # ++++++++++++++++++++++++++++
@@ -1215,6 +1232,17 @@ flattenCorrMatrix <- function(cormat, pmat) {
     p = pmat[ut]
   )
 }
+<<<<<<< HEAD
+flattenCorrMatrix(res2$r, res2$P)
+install.packages("corrplot")
+library(corrplot)
+#This is a nice visual aide but is better for a subset of the data
+upper.plot <- corrplot(res, type = "upper", order = "hclust",
+                       tl.col = "black", tl.srt = 45)
+library("PerformanceAnalytics")
+chart <- chart.Correlation(my_num_data, histogram=TRUE, pch=19)
+
+=======
 
 matrix1 <- flattenCorrMatrix(res2$r, res2$P)
 
@@ -1298,3 +1326,4 @@ tiff("heatmap1.tiff", height = 12, width = 17, units = 'cm',
       compression = "lzw", res = 300)
       plot(x,y)
       dev.off()
+>>>>>>> 2879f7bf24aa46ab9a9ac48d35f739b81632daa0
