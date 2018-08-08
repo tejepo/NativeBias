@@ -1,5 +1,5 @@
 library(dplyr)
-install.packages("haven")
+#install.packages("haven")
 library(haven)
 
 path <- file.path("~/Desktop/UW/Summer '18/CultureColab/Native Bias/Data/Study_2_w_composites.sav")
@@ -33,4 +33,7 @@ tail(studytwodata, 15)
 studytwonew <- studytwodata[,505:757]
 View(studytwonew)
 
-reduceddataset <- cbind(studytwodata$DV1_4, studytwodata$DV1_5, studytwodata$CultRacism_composite, studytwodata$BrokenStereotypes, studytwodata$Colo )
+reduceddataset <- cbind(studytwodata$DV1_4, studytwodata$DV1_5, studytwodata$CultRacism_composite, studytwodata$BrokenStereotypes, studytwodata$Colorblind, studytwodata$RomanticStereotypes, studytwodata$Contact, studytwodata$Extended, studytwodata$FamProducts_sum, studytwodata$ProductsUsed_sum, studytwodata$FamiliarExpressions_sum, studytwodata$Native_SDOadaptation, studytwodata$Conflict, studytwodata$SLB_comp, studytwodata$RacismMini_comp, studytwodata$Nationalism, studytwodata$Tough, studytwodata$Anti_fem, studytwodata$SES, studytwodata$Invisibility, studytwodata$PastGuilt, studytwodata$HistoricKnow_mean, studytwodata$ContempKnow_mean, studytwodata$GenKnow_mean, studytwodata$MaterialConcern, studytwodata$ContemporaryInvisibility, studytwodata$Race, studytwodata$Intimacy)
+
+View(reduceddataset)
+colnames(reduceddataset) <-  c("Columbus Day", "Indigenous Peoples' Day", "Cultural Racism", "Broken Stereotypes", "Colorblindness", "Romantic Stereotypes", "Contact", "Extended", "Familiar Products (sum)", "Products Used (sum)", "FamiliarExpressions (sum)","Native SDO adaptation", "Conflict", "SLB (comp)", "Racism Mini (comp)", "Nationalism", "Tough", "Anti Feminist", "College Education", "Inivisibility", "Past Guilt", "Historic Knowledge (%)", "Contemporary Knowledge (%)", "General Knowledge (%)", "Material Concerns", "Contemporary Invisibility", "Race", "Intimacy")
