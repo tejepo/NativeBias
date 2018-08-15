@@ -65,7 +65,7 @@ studytwodata <- read_sav(path)
 
 dfdehumanDV<- as.data.frame(cbind(studytwodata$Dehuman_wht_1,studytwodata$Dehuman_wht_2,studytwodata$Dehuman_wht_3,studytwodata$Dehuman_wht_4,studytwodata$Dehuman_wht_5,studytwodata$Dehuman_wht_6,studytwodata$Dehuman_wht_7,studytwodata$Dehuman_wht_8,studytwodata$Dehuman_wht_9,studytwodata$Dehuman_wht_10,studytwodata$Dehuman_wht_11,studytwodata$Dehuman_wht_12,studytwodata$Dehuman_wht_13,studytwodata$Dehuman_wht_14,studytwodata$Dehuman_wht_15,studytwodata$Dehuman_wht_16,studytwodata$Dehuman_wht_17,studytwodata$Dehuman_wht_18,studytwodata$Dehuman_wht_19,studytwodata$Dehuman_wht_20,studytwodata$Dehuman_Native_1,studytwodata$Dehuman_Native_2,studytwodata$Dehuman_Native_3,studytwodata$Dehuman_Native_4,studytwodata$Dehuman_Native_5,studytwodata$Dehuman_Native_6,studytwodata$Dehuman_Native_7,studytwodata$Dehuman_Native_8,studytwodata$Dehuman_Native_9,studytwodata$Dehuman_Native_10,studytwodata$Dehuman_Native_11,studytwodata$Dehuman_Native_12,studytwodata$Dehuman_Native_13,studytwodata$Dehuman_Native_14,studytwodata$Dehuman_Native_15,studytwodata$Dehuman_Native_16,studytwodata$Dehuman_Native_17,studytwodata$Dehuman_Native_18,studytwodata$Dehuman_Native_19,studytwodata$Dehuman_Native_20,studytwodata$DV1_4,studytwodata$DV1_5,
 
-studytwodata$BorninUS,studytwodata$LengthState,studytwodata$FatherUSBorn,studytwodata$MotherUSBorn,studytwodata$PrimaryCaretaker,studytwodata$PrimaryEd,studytwodata$SecondCaretaker,studytwodata$SecondEdu,studytwodata$Religion,studytwodata$Religiosity,studytwodata$College,studytwodata$Year,studytwodata$Education,studytwodata$LibCon,studytwodata$SES,studytwodata$Race,studytwodata$StateNumeric,studytwodata$LongestRegion,studytwodata$SubjectNumber))
+studytwodata$BorninUS,studytwodata$LengthState,studytwodata$FatherUSBorn,studytwodata$MotherUSBorn,studytwodata$PrimaryCaretaker,studytwodata$PrimaryEd,studytwodata$SecondCaretaker,studytwodata$SecondEdu,studytwodata$Religion,studytwodata$Religiosity,studytwodata$College,studytwodata$Year,studytwodata$Education,studytwodata$LibCon,studytwodata$SES,studytwodata$Race,studytwodata$StateNumeric,studytwodata$LongestRegion,studytwodata$SubjectNumber, studytwodata$EMP_comp, studytwodata$EMP_cent))
 
 
 
@@ -83,7 +83,7 @@ colnames(dfdehumanDV) <- c(V1 = "DH1_W_Responsible",V2 ="DH2_W_Civilized",V3 = "
                            V41 = "No_Columbus",V42 = "Create_IPD",V44 = "BorninUS",V45 = "LengthState",V46 = "FatherUSBorn", 
                            V48 = "MotherUSBorn",V49 = "PrimaryCaretaker",V50 = "PrimaryEd",V51 = "SecondCaretaker",V52 = "SecondEdu",
                            V53 = "Religion",V54 = "Religiosity",V55 = "College",V56 = "Year",V57 = "Education",V58 = "LibCon",V59 = "SES",
-                           V60 = "Race",V61 = "StateNumeric",V62 = "LongestRegion",V63 = "SubjectNumber")
+                           V60 = "Race",V61 = "StateNumeric",V62 = "LongestRegion",V63 = "SubjectNumber",V64 = "EMP_comp",V65 = "EMP_cent")
 
 dfdehumanDV <- dfdehumanDV %>% 
   mutate(White_Dehumanize = rowMeans(dfdehumanDV[,1:20]))
@@ -205,7 +205,7 @@ summary(lm10)
 
 ...and here it is centered:
 ```{r}
-lm11 <- lm(scale(No_Columbus,scale=F) ~ scale(DH5_N_Childlike,scale=F) + scale(DH5_W_Childlike,scale=F) + scale(DH5_N_Childlike,scale=F)*scale(DH5_W_Childlike,scale=F), dv4cor)
+lm11 <- lm(No_Columbus ~ scale(DH5_N_Childlike,scale=F) + scale(DH5_W_Childlike,scale=F) + scale(DH5_N_Childlike,scale=F)*scale(DH5_W_Childlike,scale=F), dv4cor)
 summary(lm11)
 ```
 
@@ -243,7 +243,7 @@ summary(lm12)
 
 ...and here it is centered:
 ```{r}
-lm13 <- lm(scale(No_Columbus,scale=F) ~ scale(DH2_N_Civilized,scale=F) + scale(DH2_W_Civilized,scale=F) + scale(DH2_N_Civilized,scale=F)*scale(DH2_W_Civilized,scale=F), dv4cor2)
+lm13 <- lm(No_Columbus ~ scale(DH2_N_Civilized,scale=F) + scale(DH2_W_Civilized,scale=F) + scale(DH2_N_Civilized,scale=F)*scale(DH2_W_Civilized,scale=F), dv4cor2)
 summary(lm13)
 ```
 
@@ -283,7 +283,7 @@ summary(lm14)
 
 ...and here it is centered:
 ```{r}
-lm15 <- lm(scale(Create_IPD,scale=F) ~ scale(DH5_N_Childlike,scale=F) + scale(DH5_W_Childlike,scale=F) + scale(DH5_N_Childlike,scale=F)*scale(DH5_W_Childlike,scale=F), dv5cor)
+lm15 <- lm(Create_IPD ~ scale(DH5_N_Childlike,scale=F) + scale(DH5_W_Childlike,scale=F) + scale(DH5_N_Childlike,scale=F)*scale(DH5_W_Childlike,scale=F), dv5cor)
 summary(lm15)
 ```
 
@@ -321,7 +321,7 @@ summary(lm16)
 
 ...and here it is centered:
 ```{r}
-lm17 <- lm(scale(Create_IPD,scale=F) ~ scale(DH2_N_Civilized,scale=F) + scale(DH2_W_Civilized,scale=F) + scale(DH2_N_Civilized,scale=F)*scale(DH2_W_Civilized,scale=F), dv5cor2)
+lm17 <- lm(Create_IPD ~ scale(DH2_N_Civilized,scale=F) + scale(DH2_W_Civilized,scale=F) + scale(DH2_N_Civilized,scale=F)*scale(DH2_W_Civilized,scale=F), dv5cor2)
 summary(lm17)
 ```
 
@@ -366,7 +366,7 @@ dv4and5cor2.lng <- melt(dv4and5cor2, id=c("SubjectNumber", "DH2_N_Civilized"), v
 
 dv4and5cor2.lng.cen <- dv4and5cor2.lng
 dv4and5cor2.lng.cen$DH2_N_Civilized <- scale(dv4and5cor2.lng.cen$DH2_N_Civilized, scale = F)
-dv4and5cor2.lng.cen$Rating <- scale(dv4and5cor2.lng.cen$Rating, scale = F)
+#dv4and5cor2.lng.cen$Rating <- scale(dv4and5cor2.lng.cen$Rating, scale = F)
 
 lm3 <- lm(Rating ~ DH2_N_Civilized+ Holiday_Support + DH2_N_Civilized:Holiday_Support, dv4and5cor2.lng.cen)
 summary(lm3)
@@ -381,7 +381,7 @@ dv4and5cor.lng <- melt(dv4and5cor, id=c("SubjectNumber", "DH5_N_Childlike"), var
 
 dv4and5cor.lng.cen <- dv4and5cor.lng
 dv4and5cor.lng.cen$DH5_N_Childlike <- scale(dv4and5cor.lng.cen$DH5_N_Childlike, scale = F)
-dv4and5cor.lng.cen$Rating <- scale(dv4and5cor.lng.cen$Rating, scale = F)
+#dv4and5cor.lng.cen$Rating <- scale(dv4and5cor.lng.cen$Rating, scale = F)
 
 lm9 <- lm(Rating ~ DH5_N_Childlike + Holiday_Support + DH5_N_Childlike:Holiday_Support, dv4and5cor.lng.cen)
 summary(lm9)
@@ -794,5 +794,26 @@ interaction.plot(x.factor     = dvstereotypes.edu.q.lng$College,
 #Miscellaneous
 This will be where we put other questions and answers that we have.
 
-For now,
-#ByeFelicia
+##External Motivation to Appear Non-Prejudiced
+```{r emp, include=T}
+emp_sd <- sd(dfdehumanDV$EMP_comp, na.rm=T)
+
+dfdehumanDV <- dfdehumanDV %>%
+  mutate(EMP_low = dfdehumanDV[,62]-emp_sd)
+dfdehumanDV <- dfdehumanDV %>%
+  mutate(EMP_high = dfdehumanDV[,62]+emp_sd)
+
+emp.anal <- dfdehumanDV %>%
+  dplyr::select(DH1_W_Responsible, DH2_W_Civilized, DH3_W_Moral, DH4_W_Polite, DH5_W_Childlike, DH6_W_Rational, DH7_W_Warm, DH8_W_Agentic, DH9_W_Refined, DH10_W_Lacking_Culture, `DH11_W_Lacking_Self-restraint`, DH12_W_Instinctual, DH13_W_Mature, DH14_W_Stoic, DH15_W_Emotionally_Responsive, DH16_W_Cold, DH17_W_Open, DH18_W_Rigid, DH19_W_Passive, DH20_W_Superficial, DH1_N_Responsible, DH2_N_Civilized, DH3_N_Moral, DH4_N_Polite, DH5_N_Childlike, DH6_N_Rational, DH7_N_Warm, DH8_N_Agentic, DH9_N_Refined, DH10_N_Lacking_Culture, `DH11_N_Lacking_Self-restraint`, DH12_N_Instinctual, DH13_N_Mature, DH14_N_Stoic, DH15_N_Emotionally_Responsive, DH16_N_Cold, DH17_N_Open, DH18_N_Rigid, DH19_N_Passive, DH20_N_Superficial, EMP_low, EMP_cent, EMP_high)
+
+emp.anal.lng <- melt(emp.anal, id=c("DH1_W_Responsible", "DH2_W_Civilized", "DH3_W_Moral", "DH4_W_Polite", "DH5_W_Childlike", "DH6_W_Rational", "DH7_W_Warm", "DH8_W_Agentic", "DH9_W_Refined", "DH10_W_Lacking_Culture", "DH11_W_Lacking_Self-restraint", "DH12_W_Instinctual", "DH13_W_Mature", "DH14_W_Stoic", "DH15_W_Emotionally_Responsive", "DH16_W_Cold", "DH17_W_Open", "DH18_W_Rigid", "DH19_W_Passive", "DH20_W_Superficial", "DH1_N_Responsible", "DH2_N_Civilized", "DH3_N_Moral", "DH4_N_Polite", "DH5_N_Childlike", "DH6_N_Rational", "DH7_N_Warm", "DH8_N_Agentic", "DH9_N_Refined", "DH10_N_Lacking_Culture", "DH11_N_Lacking_Self-restraint", "DH12_N_Instinctual", "DH13_N_Mature", "DH14_N_Stoic", "DH15_N_Emotionally_Responsive", "DH16_N_Cold", "DH17_N_Open", "DH18_N_Rigid", "DH19_N_Passive", "DH20_N_Superficial"), variable.name = "EMP", value.name="Mean Score")       
+
+test <- summarySE(data=emp.anal.lng, measurevar="Mean Score", groupvars=c("DH1_W_Responsible", "DH2_W_Civilized", "DH3_W_Moral", "DH4_W_Polite", "DH5_W_Childlike", "DH6_W_Rational", "DH7_W_Warm", "DH8_W_Agentic", "DH9_W_Refined", "DH10_W_Lacking_Culture", "`DH11_W_Lacking_Self-restraint`", "DH12_W_Instinctual", "DH13_W_Mature", "DH14_W_Stoic", "DH15_W_Emotionally_Responsive", "DH16_W_Cold", "DH17_W_Open", "DH18_W_Rigid", "DH19_W_Passive", "DH20_W_Superficial", "DH1_N_Responsible", "DH2_N_Civilized", "DH3_N_Moral", "DH4_N_Polite", "DH5_N_Childlike", "DH6_N_Rational", "DH7_N_Warm", "DH8_N_Agentic", "DH9_N_Refined", "DH10_N_Lacking_Culture", "`DH11_N_Lacking_Self-restraint`", "DH12_N_Instinctual", "DH13_N_Mature", "DH14_N_Stoic", "DH15_N_Emotionally_Responsive", "DH16_N_Cold", "DH17_N_Open", "DH18_N_Rigid", "DH19_N_Passive", "DH20_N_Superficial","EMP"), na.rm = T)
+
+#emp.anal.lng <- melt(emp.anal, id=c("EMP_low", "EMP_cent", "EMP_high"), variable.name = "Measure", value.name="Rating")
+
+#emp.anal.lng.c <- summarySE(data=emp.anal.lng, measurevar="Rating", groupvars=c("Measure","EMP_low", "EMP_cent", "EMP_high"), na.rm = T)
+
+emp.table <- psych::describeBy(emp.anal.lng, group = "EMP")
+pander(emp.table)
+```
