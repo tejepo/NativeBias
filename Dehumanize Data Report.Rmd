@@ -1,0 +1,327 @@
+---
+title: 'Dehumanization X Columbus Day/Indigenous Peoples Day'
+author: "Terrence Pope"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float: true
+    theme: spacelab
+    highlight: zenburn
+---
+
+```{r setup,include=F}
+knitr::opts_chunk$set(echo = T)
+library(haven)
+library(tidyverse)
+library(magrittr)
+library(pander)
+library(psych)
+library(Hmisc)
+library(reshape2)
+
+#Creating a function that helps summarize data
+summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
+                      conf.interval=.95, .drop=TRUE) {
+  library(plyr)
+  
+  # New version of length which can handle NA's: if na.rm==T, don't count them
+  length2 <- function (x, na.rm=FALSE) {
+    if (na.rm) sum(!is.na(x))
+    else       length(x)
+  }
+  
+  # This does the summary. For each group's data frame, return a vector with
+  # N, mean, and sd
+  datac <- plyr::ddply(data, groupvars, .drop=.drop,
+                       .fun = function(xx, col) {
+                         c(N    = length2(xx[[col]], na.rm=na.rm),
+                           mean = mean   (xx[[col]], na.rm=na.rm),
+                           sd   = sd     (xx[[col]], na.rm=na.rm)
+                         )
+                       },
+                       measurevar
+  )
+  
+  # Rename the "mean" column    
+  datac <- plyr::rename(datac, c("mean" = measurevar))
+  
+  datac$se <- datac$sd / sqrt(datac$N)  # Calculate standard error of the mean
+  
+  # Confidence interval multiplier for standard error
+  # Calculate t-statistic for confidence interval: 
+  # e.g., if conf.interval is .95, use .975 (above/below), and use df=N-1
+  ciMult <- qt(conf.interval/2 + .5, datac$N-1)
+  datac$ci <- datac$se * ciMult
+  
+  return(datac)
+}
+
+#load in data
+path <- file.path("~/Desktop/UW/Summer '18/CultureColab/Native Bias/Data/Study_2_w_composites.sav")
+
+studytwodata <- read_sav(path)
+
+dfdehumanDV<- as.data.frame(cbind(studytwodata$Dehuman_wht_1,studytwodata$Dehuman_wht_2,studytwodata$Dehuman_wht_3,studytwodata$Dehuman_wht_4,studytwodata$Dehuman_wht_5,studytwodata$Dehuman_wht_6,studytwodata$Dehuman_wht_7,studytwodata$Dehuman_wht_8,studytwodata$Dehuman_wht_9,studytwodata$Dehuman_wht_10,studytwodata$Dehuman_wht_11,studytwodata$Dehuman_wht_12,studytwodata$Dehuman_wht_13,studytwodata$Dehuman_wht_14,studytwodata$Dehuman_wht_15,studytwodata$Dehuman_wht_16,studytwodata$Dehuman_wht_17,studytwodata$Dehuman_wht_18,studytwodata$Dehuman_wht_19,studytwodata$Dehuman_wht_20,studytwodata$Dehuman_Native_1,studytwodata$Dehuman_Native_2,studytwodata$Dehuman_Native_3,studytwodata$Dehuman_Native_4,studytwodata$Dehuman_Native_5,studytwodata$Dehuman_Native_6,studytwodata$Dehuman_Native_7,studytwodata$Dehuman_Native_8,studytwodata$Dehuman_Native_9,studytwodata$Dehuman_Native_10,studytwodata$Dehuman_Native_11,studytwodata$Dehuman_Native_12,studytwodata$Dehuman_Native_13,studytwodata$Dehuman_Native_14,studytwodata$Dehuman_Native_15,studytwodata$Dehuman_Native_16,studytwodata$Dehuman_Native_17,studytwodata$Dehuman_Native_18,studytwodata$Dehuman_Native_19,studytwodata$Dehuman_Native_20,studytwodata$DV1_4,studytwodata$DV1_5,
+
+studytwodata$BorninUS,studytwodata$LengthState,studytwodata$FatherUSBorn,studytwodata$MotherUSBorn,studytwodata$PrimaryCaretaker,studytwodata$PrimaryEd,studytwodata$SecondCaretaker,studytwodata$SecondEdu,studytwodata$Religion,studytwodata$Religiosity,studytwodata$College,studytwodata$Year,studytwodata$Education,studytwodata$LibCon,studytwodata$SES,studytwodata$Race,studytwodata$StateNumeric,studytwodata$LongestRegion,studytwodata$SubjectNumber))
+
+
+
+
+colnames(dfdehumanDV) <- c(V1 = "DH1_W_Responsible",V2 ="DH2_W_Civilized",V3 = "DH3_W_Moral",V4 = "DH4_W_Polite",
+                           V5 = "DH5_W_Childlike",V6 = "DH6_W_Rational",V7 = "DH7_W_Warm",V8 = "DH8_W_Agentic",
+                           V9 = "DH9_W_Refined",V10 = "DH10_W_Lacking_Culture",V11 = "DH11_W_Lacking_Self-restraint",V12 = "DH12_W_Instinctual",
+                           V13 = "DH13_W_Mature",V14 = "DH14_W_Stoic",V15 = "DH15_W_Emotionally_Responsive",V16 = "DH16_W_Cold",
+                           V17 = "DH17_W_Open",V18="DH18_W_Rigid",V19 =  "DH19_W_Passive",V20 = "DH20_W_Superficial",
+                           V21 =  "DH1_N_Responsible",V22 = "DH2_N_Civilized",V23 = "DH3_N_Moral",V24 = "DH4_N_Polite",
+                           V25 = "DH5_N_Childlike",V26 = "DH6_N_Rational",V27 = "DH7_N_Warm",V28 = "DH8_N_Agentic",
+                           V29 =  "DH9_N_Refined",V30 = "DH10_N_Lacking_Culture",V31 = "DH11_N_Lacking_Self-restraint",V32 =  "DH12_N_Instinctual",
+                           V33 = "DH13_N_Mature",V34 ="DH14_N_Stoic",V35 = "DH15_N_Emotionally_Responsive",V36 = "DH16_N_Cold",
+                           V37 = "DH17_N_Open",V38 = "DH18_N_Rigid",V39 = "DH19_N_Passive",V40 =  "DH20_N_Superficial", 
+                           V41 = "No_Columbus",V42 = "Create_IPD",V44 = "BorninUS",V45 = "LengthState",V46 = "FatherUSBorn", 
+                           V48 = "MotherUSBorn",V49 = "PrimaryCaretaker",V50 = "PrimaryEd",V51 = "SecondCaretaker",V52 = "SecondEdu",
+                           V53 = "Religion",V54 = "Religiosity",V55 = "College",V56 = "Year",V57 = "Education",V58 = "LibCon",V59 = "SES",
+                           V60 = "Race",V61 = "StateNumeric",V62 = "LongestRegion",V63 = "SubjectNumber")
+
+dfdehumanDV <- dfdehumanDV %>% 
+  mutate(White_Dehumanize = rowMeans(dfdehumanDV[,1:20]))
+dfdehumanDV <- dfdehumanDV %>% 
+  mutate(Native_Dehumanize = rowMeans(dfdehumanDV[,21:40]))
+dfdehumanDV <- dfdehumanDV %>%
+  mutate(Age = as.numeric(studytwodata$Age))
+
+dfdehumanDV$BorninUS <- factor(dfdehumanDV$BorninUS,
+                               levels = c(0,1),
+                               labels = c("No", "Yes"))
+dfdehumanDV$FatherUSBorn <- factor(dfdehumanDV$FatherUSBorn,
+                               levels = c(0,1,3),
+                               labels = c("No", "Yes", "Unsure/Not applicable"))
+
+dfdehumanDV$MotherUSBorn <- factor(dfdehumanDV$MotherUSBorn,
+                               levels = c(0,1,3),
+                               labels = c("No", "Yes", "Unsure/Not applicable"))
+
+dfdehumanDV$PrimaryCaretaker <- factor(dfdehumanDV$PrimaryCaretaker,
+                               levels = c(1,2,3,4,5,6,7),
+                               labels = c("Mother", "Father", "Extended female family member (e.g., grandmother, aunt)", "Extended male family member (e.g., grandfather, uncle)", "Legal guardian female", "Legal guardian male", "Another caretaker (please describe):"))
+
+dfdehumanDV$SecondCaretaker <- factor(dfdehumanDV$SecondCaretaker,
+                               levels = c(1,2,3,4,5,6,7,8),
+                               labels = c("No, I did not have another caretaker", "Mother", "Father", "Extended female family member (e.g., grandmother, aunt)", "Extended male family member (e.g., grandfather, uncle)", "Legal guardian female", "Legal guardian male", "Another caretaker (please describe):"))
+
+dfdehumanDV$Religion <- factor(dfdehumanDV$Religion,
+                               levels = c(1,2,3,4,5,6,7,8),
+                               labels = c("None", "Catholic", "Christian (non Catholic)", "Jewish", "Muslim", "Buddhist", "Hindu", "Other (please specify):"))
+
+dfdehumanDV$College <- factor(dfdehumanDV$College,
+                               levels = c(1,2),
+                               labels = c("Yes", "No"))
+
+dfdehumanDV$SES <- factor(dfdehumanDV$SES,
+                               levels = c(-1,1),
+                               labels = c("No College", "College"))
+
+dfdehumanDV$Race <- factor(dfdehumanDV$Race,
+                               levels = c(1,2,3,4,5,6,7,8),
+                               labels = c("Asian", "Black","White","Latino","Middle Eastern","Native","Other","Multiracial"))
+
+dfdehumanDV$StateNumeric <- factor(dfdehumanDV$StateNumeric,
+                               levels = c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50),
+                               labels = c("Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"))
+
+dfdehumanDV$LongestRegion <- factor(dfdehumanDV$LongestRegion,
+                               levels = c(1,2,3,4,5,6,7,8),
+                               labels = c("New England","Mideast","Great Lakes","Plains","Southeast","Southwest","Rocky Mountain","Far West"))
+
+destable <- as.data.frame(psych::describe(dfdehumanDV))
+```
+#Intro 
+
+This is a data set that includes the following variables:
+
+```{r names, include =T, echo=F}
+variable.list <- as.matrix(names(dfdehumanDV))
+pander(variable.list)
+```
+<br></br>
+It's primary focus is to look a bit more closely at the dehumaniztion variables and how they interact not only with one another, but with the dependent variables (Columbus Day/Indigenous Peoples' Day (henceforth referred to as IPD)), as well as some of the demographic information gathered on the participants in this sample.
+
+This sample comes from **Study Two**, so it is (*if I'm not mistaken*) a sample of participants gathered via *mturk*.
+
+#Descriptives
+First, lets take a look at a descriptives table of our variables. Keep in mind that some of the variables are categorical and are more difficult to interpret in a descriptives table.
+
+```{r descriptives table, include =T, echo=F}
+destable <- as.data.frame(cbind(destable[,2:5],destable[,13]))
+table.names <- c("n", "mean", "sd", "median","se")
+names(destable) <- table.names
+pander(destable)
+```
+
+##Correlation of Dehumanization
+One thing you'll probably notice right away is that I've made some aggregate variables at the end of the data set that average across all Dehumanization measures for both whites and natives. Let's take a look at the relationship between the two zoomed out a bit.
+```{r whitenativedhcor, include =T, echo=F}
+plot(dfdehumanDV$White_Dehumanize, dfdehumanDV$Native_Dehumanize)
+
+dehum.nw.cor <- cor.test(dfdehumanDV$White_Dehumanize, dfdehumanDV$Native_Dehumanize, method = ("pearson"))
+
+dehum.nw.cor
+```
+
+At baseline the two seem to hang together pretty well. People seem to be rating Natives and Whites similarly among the measures of dehumanization that we have.
+
+##Dependent Variables: Columbus Day X Dehumanization
+Before we move on, let's take a gander at the dependent variables. Does there seem to be a relationship between dehumanization and *Support for getting rid of Columbus Day*? 
+
+```{r dv4cor, include = T, echo = F}
+dv4cor <- dfdehumanDV %>%
+  dplyr::select(SubjectNumber, No_Columbus, White_Dehumanize, Native_Dehumanize)
+
+dv4cor.lng <- melt(dv4cor, id=c("SubjectNumber", "No_Columbus"), variable.name = "Group", value.name="Rating")
+
+ggplot(dv4cor.lng, aes(x= Rating, y = No_Columbus, color = Group, group = Group)) +
+  geom_point(position = position_jitter(width = 0.25)) +
+  geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T) +
+  xlab("Dehumanization (0-100)") +
+  ylab("Support for No Columbus Day") +
+  labs(color='Dehumanized Group') +
+  scale_y_continuous(limits = c(0, NA))
+
+lm1 <- lm(No_Columbus ~ Rating + Group + Rating:Group, dv4cor.lng)
+summary(lm1)
+```
+`**Keep in mind while looking at this graph that low scores on the dehumanization measure mean that participants are dehumanizing the group` **more**.
+
+<br></br>
+
+##Dependent Variables: Indigenous Peoples' Day X Dehumanization
+What about between dehumanization and *Support for IPD*?
+
+```{r dv5cor, include = T, echo = F}
+dv5cor <- dfdehumanDV %>%
+  dplyr::select(SubjectNumber, Create_IPD, White_Dehumanize, Native_Dehumanize)
+
+dv5cor.lng <- melt(dv5cor, id=c("SubjectNumber", "Create_IPD"), variable.name = "Group", value.name="Rating")
+
+ggplot(dv5cor.lng, aes(x= Rating, y = Create_IPD, color = Group, group = Group)) +
+  geom_point(position = position_jitter(width = 0.25)) +
+  geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T) +
+  xlab("Dehumanization (0-100)") +
+  ylab("Support for IPD") +
+  labs(color='Dehumanized Group') +
+  scale_y_continuous(limits = c(0, NA))
+
+lm2 <- lm(Create_IPD ~ Rating + Group + Rating:Group, dv5cor.lng)
+summary(lm2)
+```
+
+##Dependent Variables: Side by Sides
+We can also look at both of these groups side by side:
+
+```{r, include = T, echo = F}
+ggplot(dv4cor.lng, aes(x= Rating, y = No_Columbus, color = Group, group = Group)) +
+  geom_point(position = position_jitter(width = 0.25)) +
+  geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T) +
+  xlab("Dehumanization (0-100)") +
+  ylab("Support for No Columbus Day") +
+  labs(color='Dehumanized Group') +
+  facet_wrap(~ Group) +
+  scale_y_continuous(limits = c(0, NA))
+
+```
+<br></br>
+and...
+<br></br>
+```{r, include = T, echo = F}
+ggplot(dv5cor.lng, aes(x= Rating, y = Create_IPD, color = Group, group = Group)) +
+  geom_point(position = position_jitter(width = 0.25)) +
+  geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T) +
+  xlab("Dehumanization (0-100)") +
+  ylab("Support for IPD") +
+  labs(color='Dehumanized Group') +
+  facet_wrap(~ Group) +
+  scale_y_continuous(limits = c(0, NA))
+```
+
+##Dependent Variables: Digging a Little Deeper
+Whe can see more clearly that significant interaction when they are side by side. Attitudes toward white more strongly predicts the relationship between dehumanization and support for removing Columbus day.
+
+Interestingly, the direction of that relationship changes when we're talking about IPD. If we create a model that looks at this interaction with both ratings of support and dehumanization centered at the mean we see that this change in direction is significant (*p* = .005)
+
+```{r, include = T, echo = F}
+dv4and5cor <- dfdehumanDV %>%
+  dplyr::select(SubjectNumber, Create_IPD, No_Columbus, Native_Dehumanize)
+
+dv4and5cor.lng <- melt(dv4and5cor, id=c("SubjectNumber", "Native_Dehumanize"), variable.name = "Holiday_Support", value.name="Rating")
+
+dv4and5cor.lng.cen <- dv4and5cor.lng
+dv4and5cor.lng.cen$Native_Dehumanize <- scale(dv4and5cor.lng.cen$Native_Dehumanize, scale = F)
+dv4and5cor.lng.cen$Rating <- scale(dv4and5cor.lng.cen$Rating, scale = F)
+
+lm3 <- lm(Native_Dehumanize ~ Rating + Holiday_Support + Rating:Holiday_Support, dv4and5cor.lng.cen)
+summary(lm3)
+```
+`**For some reason in the markdown document the "Rating" coefficient is significant. In the code it is not` (*p*=.12).
+
+#Exploratory Analysis
+
+Let's dig into some of the demographic information in this subset of the data.
+
+##Race
+First let's look at the frequency of our different racial groups
+```{r race1, include = T, echo = F}
+Race.obj <- describe(dfdehumanDV$Race)
+Race.obj <- Race.obj$values
+Race.bars <- as.vector(Race.obj$frequency)
+names(Race.bars) <- Race.obj$value
+pander(Race.bars)
+
+colors <- c("red", "yellow", "green", "violet", "orange", "blue", "pink", "cyan") 
+barplot(Race.bars, col=colors)
+```
+
+Since our data skews toward **Asian**, **Black**, **White**, and **Latino** let's use these groups in future analysis. 
+
+###Race X Support for Abolishing Columbus Day
+First off, let's look at how our different racial groups answered the question about Columbus Day.
+
+```{r bardv1, include = T, echo = F}
+
+dfdehumanDV.race <- 
+
+
+# ggplot(Data.lng.c2, aes(x=Condition, y=Rating, fill=Race)) +
+#   geom_bar(position=position_dodge(), stat="identity",
+#            colour="black", # Use black outlines,
+#            size=.3) +      # Thinner lines
+#   geom_errorbar(aes(ymin=Rating-se, ymax=Rating+se),
+#                 size=.3,    # Thinner lines
+#                 width=.2,
+#                 position=position_dodge(.9)) +
+#   xlab("Participant Condition") +
+#   ylab("Participant Ratings (1-7)") +
+#   scale_fill_hue(name="Applicant Race", # Legend label, use darker colors
+#                  breaks=c("AF", "AA"),
+#                  labels=c("African American", "Asian American")) +
+#   ggtitle("Ratings of Applicants on Measures of\nAmericanness, Qualification, and Status") +
+#   scale_y_continuous(limits = c(0,7)) +
+#   facet_wrap(~Measure) +
+#   theme_bw()
+
+# ggplot(data = gapminder, aes(x = year, y = lifeExp, group = country)) +
+#   geom_line(alpha = 0.5, aes(color = "Country", size = "Country")) +
+#   geom_line(stat = "smooth", method = "loess",
+#             aes(group = continent, color = "Continent",
+#                 size = "Continent"), alpha = 0.5) +
+#   xlab("Year") +
+#   ylab("Life Expectancy") +
+#   facet_wrap(~ continent, nrow = 2) +
+#   scale_color_manual(name = "Unit", values = c("Country" = "black",
+#                                                "Continent" = "blue")) +             scale_size_manual(name = "Unit", values = c("Country" = 0.5,
+#                                               "Continent" = 3)) +
+#   theme_minimal(base_size = 14) +
+#   theme(legend.position=c(0.75, 0.2),
+#         axis.text.x = element_text(angle = 45))
+```
