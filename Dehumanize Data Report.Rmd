@@ -12,7 +12,7 @@ output:
 ---
 
 ```{r setup,include=F}
-knitr::opts_chunk$set(echo = T)
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
 library(haven)
 library(tidyverse)
 library(magrittr)
@@ -568,3 +568,111 @@ lm8 <- lm(scale(Create_IPD, scale=F) ~ White_Dehumanize + Native_Dehumanize + DH
 summary(lm8)
 ```
 
+The story here seems to be that in the middle, when we're talking about the average level of dehumanization, people are more or less treating the civilized question like they treat the other measures of dehumanization. However, when it comes to perceptions of Whites and Natives as *childlike* something else starts happening, particularly at the extremes. Whether there is a story there for These two measure in particular is difficult to say. 
+
+####Childlike and Civilized by Race
+Let's look at these measures broken down by race and then by education level:
+
+```{r dehumanbreadown1, include=T,echo=F}
+dvstereotypes.race <- dfdehumanDV.stereotypes %>%
+  dplyr::select(SubjectNumber, White_Dehumanize, Native_Dehumanize, DH2_W_Civilized, DH2_N_Civilized, DH5_W_Childlike, DH5_N_Childlike, Race)
+
+dvstereotypes.race <- dvstereotypes.race %>%
+  filter(Race %in% racialgroups)
+
+dvstereotypes.race.lng <- melt(dvstereotypes.race, id=c("SubjectNumber", "Race"), variable.name = "Group", value.name="Rating")
+
+dvstereotypes.race.lng.c <- summarySE(dvstereotypes.race.lng, measurevar="Rating", groupvars=c("Race","Group"), na.rm = T)
+
+ggplot(dvstereotypes.race.lng.c, aes(factor(Group), Rating, fill = Race)) +
+  geom_bar(stat="identity", position = "dodge") + 
+  geom_errorbar(aes(ymin=Rating-se, ymax=Rating+se),
+                size=.3,    # Thinner lines
+                width=.2,
+                position=position_dodge(.9)) +
+  xlab("Dehumanization Measure") +
+  ggtitle("Dehumanization Measures by Race") +
+  scale_fill_brewer(palette = "Set1") +
+  theme(axis.text.x = element_text(angle = 45, vjust=0.75, hjust=1))
+
+aov4 <- aov(Rating ~ Group + Race + Group*Race, dvstereotypes.race.lng)
+summary(aov4)
+#TukeyHSD(aov4)
+```
+
+And in case we haven't done it, here's the measure's side by side without separating for race:
+
+```{r}
+dvstereotypes.lng.c <- summarySE(dvstereotypes.race.lng, measurevar="Rating", groupvars=c("Group"), na.rm = T)
+
+ggplot(dvstereotypes.lng.c, aes(factor(Group), Rating)) +
+  geom_bar(stat="identity", position = "dodge") + 
+  geom_errorbar(aes(ymin=Rating-se, ymax=Rating+se),
+                size=.3,    # Thinner lines
+                width=.2,
+                position=position_dodge(.9)) +
+  xlab("Dehumanization Measure") +
+  ggtitle("Dehumanization Measures") +
+  scale_fill_brewer(palette = "Set1") +
+  theme(axis.text.x = element_text(angle = 45, vjust=0.75, hjust=1))
+
+aov5 <- aov(Rating ~ Group, dvstereotypes.race.lng)
+summary(aov5)
+TukeyHSD(aov5)
+```
+
+What we end up with is several possible stories. The big picture seems to be that in some cases it is the measure that is differentiating and other times the race of the participant seems to be driving differences, particularly in our civilized and childlike measures.
+
+
+####Childlike and Civilized by Education
+Now, let's take a bit of a left turn and introduce another wrinkle into this analysis. How do these things break down by education level. For the sake of argument we'll look just at *college educated* versus those who are *not college educated*.
+
+```{r dehumanbreadown2, include=T,echo=F}
+dvstereotypes.edu <- dfdehumanDV.stereotypes %>%
+  dplyr::select(SubjectNumber, White_Dehumanize, Native_Dehumanize, DH2_W_Civilized, DH2_N_Civilized, DH5_W_Childlike, DH5_N_Childlike, College)
+
+dvstereotypes.edu.lng <- melt(dvstereotypes.edu, id=c("SubjectNumber", "College"), variable.name = "Group", value.name="Rating")
+
+dvstereotypes.edu.lng.c <- summarySE(dvstereotypes.edu.lng, measurevar="Rating", groupvars=c("College","Group"), na.rm=T)
+
+dvstereotypes.edu.lng.c <- dvstereotypes.edu.lng.c[-13:-18,]
+
+ggplot(dvstereotypes.edu.lng.c, aes(factor(Group), Rating, fill = College)) +
+  geom_bar(stat="identity", position = "dodge") + 
+  geom_errorbar(aes(ymin=Rating-se, ymax=Rating+se),
+                size=.3,    # Thinner lines
+                width=.2,
+                position=position_dodge(.9)) +
+  xlab("Dehumanization Measure") +
+  ggtitle("Dehumanization Measures by Education Level") +
+  scale_fill_brewer(palette = "Set1") +
+  theme(axis.text.x = element_text(angle = 45, vjust=0.75, hjust=1))
+
+aov6 <- aov(Rating ~ Group + College + Group*College, dvstereotypes.edu.lng)
+summary(aov6)
+#TukeyHSD(aov6)
+```
+
+A simple interaction plot will show us these effects in a different form:
+```{r}
+dvstereotypes.edu.q <- dfdehumanDV.stereotypes %>%
+  dplyr::select(White_Dehumanize, Native_Dehumanize, DH2_W_Civilized, DH2_N_Civilized, DH5_W_Childlike, DH5_N_Childlike, College)
+
+dvstereotypes.edu.q.lng <- melt(dvstereotypes.edu.q, id=c("College"), variable.name = "Group", value.name="Rating", na.rm = T)
+
+interaction.plot(x.factor     = dvstereotypes.edu.q.lng$College,
+                 trace.factor = dvstereotypes.edu.q.lng$Group, 
+                 response     = dvstereotypes.edu.q.lng$Rating, 
+                 fun = mean,
+                 type="b",
+                 col=c("black","red", "orange", "blue", "green", "purple"),  ### Colors for levels of trace var.
+                 pch=c(19, 17, 15, 13, 11, 9),             ### Symbols for levels of trace var.
+                 fixed=TRUE,                    ### Order by factor order in data
+                 leg.bty = "o")
+```
+
+#Miscellaneous
+This will be where we put other questions and answers that we have.
+
+For now,
+#ByeFelicia
