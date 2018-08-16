@@ -804,7 +804,7 @@ dfdehumanDV <- dfdehumanDV %>%
   mutate(EMP_high = dfdehumanDV[,62]+emp_sd)
 
 emp.anal <- dfdehumanDV %>%
-  dplyr::select(DH1_W_Responsible, DH2_W_Civilized, DH3_W_Moral, DH4_W_Polite, DH5_W_Childlike, DH6_W_Rational, DH7_W_Warm, DH8_W_Agentic, DH9_W_Refined, DH10_W_Lacking_Culture, `DH11_W_Lacking_Self-restraint`, DH12_W_Instinctual, DH13_W_Mature, DH14_W_Stoic, DH15_W_Emotionally_Responsive, DH16_W_Cold, DH17_W_Open, DH18_W_Rigid, DH19_W_Passive, DH20_W_Superficial, DH1_N_Responsible, DH2_N_Civilized, DH3_N_Moral, DH4_N_Polite, DH5_N_Childlike, DH6_N_Rational, DH7_N_Warm, DH8_N_Agentic, DH9_N_Refined, DH10_N_Lacking_Culture, `DH11_N_Lacking_Self-restraint`, DH12_N_Instinctual, DH13_N_Mature, DH14_N_Stoic, DH15_N_Emotionally_Responsive, DH16_N_Cold, DH17_N_Open, DH18_N_Rigid, DH19_N_Passive, DH20_N_Superficial, EMP_low, EMP_cent, EMP_high)
+  dplyr::select(DH1_W_Responsible, DH2_W_Civilized, DH3_W_Moral, DH4_W_Polite, DH5_W_Childlike, DH6_W_Rational, DH7_W_Warm, DH8_W_Agentic, DH9_W_Refined, DH10_W_Lacking_Culture, `DH11_W_Lacking_Self-restraint`, DH12_W_Instinctual, DH13_W_Mature, DH14_W_Stoic, DH15_W_Emotionally_Responsive, DH16_W_Cold, DH17_W_Open, DH18_W_Rigid, DH19_W_Passive, DH20_W_Superficial, DH1_N_Responsible, DH2_N_Civilized, DH3_N_Moral, DH4_N_Polite, DH5_N_Childlike, DH6_N_Rational, DH7_N_Warm, DH8_N_Agentic, DH9_N_Refined, DH10_N_Lacking_Culture, `DH11_N_Lacking_Self-restraint`, DH12_N_Instinctual, DH13_N_Mature, DH14_N_Stoic, DH15_N_Emotionally_Responsive, DH16_N_Cold, DH17_N_Open, DH18_N_Rigid, DH19_N_Passive, DH20_N_Superficial, EMP_comp)
 
 emp.anal.lng <- melt(emp.anal, id=c("DH1_W_Responsible", "DH2_W_Civilized", "DH3_W_Moral", "DH4_W_Polite", "DH5_W_Childlike", "DH6_W_Rational", "DH7_W_Warm", "DH8_W_Agentic", "DH9_W_Refined", "DH10_W_Lacking_Culture", "DH11_W_Lacking_Self-restraint", "DH12_W_Instinctual", "DH13_W_Mature", "DH14_W_Stoic", "DH15_W_Emotionally_Responsive", "DH16_W_Cold", "DH17_W_Open", "DH18_W_Rigid", "DH19_W_Passive", "DH20_W_Superficial", "DH1_N_Responsible", "DH2_N_Civilized", "DH3_N_Moral", "DH4_N_Polite", "DH5_N_Childlike", "DH6_N_Rational", "DH7_N_Warm", "DH8_N_Agentic", "DH9_N_Refined", "DH10_N_Lacking_Culture", "DH11_N_Lacking_Self-restraint", "DH12_N_Instinctual", "DH13_N_Mature", "DH14_N_Stoic", "DH15_N_Emotionally_Responsive", "DH16_N_Cold", "DH17_N_Open", "DH18_N_Rigid", "DH19_N_Passive", "DH20_N_Superficial"), variable.name = "EMP", value.name="Mean Score")       
 
@@ -816,4 +816,5 @@ test <- summarySE(data=emp.anal.lng, measurevar="Mean Score", groupvars=c("DH1_W
 
 emp.table <- psych::describeBy(emp.anal.lng, group = "EMP")
 pander(emp.table)
+
 ```
