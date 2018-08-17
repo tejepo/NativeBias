@@ -165,6 +165,7 @@ pander(destable)
 ```{r whitenativedhcor, include =T, echo=F}
 ggplot(dfdehumanDV, aes(x=N_Uncivilized, y = DH5_N_Childlike)) +
   geom_point(position = position_jitter(width = 0.25)) +
+  geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T) +
   xlab("Uncivilized (Natives)") +
   ylab("Childlike (Natives)") +
   scale_y_continuous(limits = c(0, NA))
