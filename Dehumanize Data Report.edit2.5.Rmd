@@ -479,8 +479,8 @@ ggplot(dfdehumanrace.civilized, aes(x=Race, y=N_Uncivilized, fill=Race)) +
                 width=.2,
                 position=position_dodge(.9)) +
   xlab("Participant Race") +
-  ylab("Measure of Attitudes Toward Natives: Civilized (0-100)") +
-  scale_y_continuous(limits = c(0,100)) +
+  ylab("Measure of Attitudes Toward Natives: Civilized (0-7)") +
+  scale_y_continuous(limits = c(0,7)) +
   ggtitle("Do Different Racial Groups\n Have Similar Attitudes Toward Natives?") +
   theme_bw()
 
@@ -530,7 +530,7 @@ First **Columbus Day**:
 ggplot(dfdehumanDV.race, aes(x= N_Uncivilized, y = No_Columbus)) +
   geom_point(position = position_jitter(width = 0.25)) +
   geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T) +
-  xlab("Percptions of Natives: Civilized (0-100)") +
+  xlab("Percptions of Natives: Civilized (0-7)") +
   ylab("Support for Abolishing Columbus Day") +
   #labs(color='Race of\nParticipant') +
   facet_wrap(~ Race) +
@@ -543,7 +543,7 @@ Then **Indigenous Peoples' Day**:
 ggplot(dfdehumanDV.race, aes(x= N_Uncivilized, y = Create_IPD)) +
   geom_point(position = position_jitter(width = 0.25)) +
   geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T) +
-  xlab("Percptions of Natives: Civilized (0-100)") +
+  xlab("Percptions of Natives: Civilized (0-7)") +
   ylab("Support for Creating Indigenous Peoples' Day") +
   #labs(color='Race of\nParticipant') +
   facet_wrap(~ Race) +
