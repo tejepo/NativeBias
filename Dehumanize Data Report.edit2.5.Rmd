@@ -163,7 +163,11 @@ pander(destable)
 ##Correlation of Civilized & Childlike for Natives
 
 ```{r whitenativedhcor, include =T, echo=F}
-plot(dfdehumanDV$N_Uncivilized, dfdehumanDV$DH5_N_Childlike)
+ggplot(dfdehumanDV, aes(x=N_Uncivilized, y = DH5_N_Childlike)) +
+  geom_point(position = position_jitter(width = 0.25)) +
+  xlab("Uncivilized (Natives)") +
+  ylab("Childlike (Natives)") +
+  scale_y_continuous(limits = c(0, NA))
 
 dehum.nw.cor <- cor.test(dfdehumanDV$N_Uncivilized, dfdehumanDV$DH5_N_Childlike, method = ("pearson"))
 
@@ -215,16 +219,15 @@ Before we move on, let's take a gander at the dependent variables. Does there se
 
 ```{r dv4cor2, include = T, echo = F}
 dv4cor2 <- dfdehumanDV %>%
-  dplyr::select(SubjectNumber, No_Columbus, DH2_W_Civilized, N_Uncivilized)
+  dplyr::select(SubjectNumber, No_Columbus, N_Uncivilized)
 
 dv4cor2.lng <- melt(dv4cor2, id=c("SubjectNumber", "No_Columbus"), variable.name = "Group", value.name="Rating")
 
 ggplot(dv4cor2.lng, aes(x= Rating, y = No_Columbus, color = Group, group = Group)) +
   geom_point(position = position_jitter(width = 0.25)) +
   geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T) +
-  xlab("Dehumanization (0-100)") +
+  xlab("Uncivilized") +
   ylab("Support for No Columbus Day") +
-  labs(color='Dehumanized Measure') +
   scale_y_continuous(limits = c(0, NA))
 
 #lm1 <- lm(No_Columbus ~ Rating + Group + Rating:Group, dv4cor.lng)
@@ -237,13 +240,13 @@ ggplot(dv4cor2.lng, aes(x= Rating, y = No_Columbus, color = Group, group = Group
 
 Here is the Civilized model uncentered:
 ```{r}
-lm12 <- lm(No_Columbus ~ N_Uncivilized + DH2_W_Civilized + N_Uncivilized*DH2_W_Civilized, dv4cor2)
+lm12 <- lm(No_Columbus ~ N_Uncivilized, dv4cor2)
 summary(lm12)
 ```
 
 ...and here it is centered:
 ```{r}
-lm13 <- lm(No_Columbus ~ scale(N_Uncivilized,scale=F) + scale(DH2_W_Civilized,scale=F) + scale(N_Uncivilized,scale=F)*scale(DH2_W_Civilized,scale=F), dv4cor2)
+lm13 <- lm(No_Columbus ~ scale(N_Uncivilized,scale=F), dv4cor2)
 summary(lm13)
 ```
 
@@ -293,14 +296,14 @@ Before we move on, let's take a gander at the dependent variables. Does there se
 
 ```{r dv5cor2, include = T, echo = F}
 dv5cor2 <- dfdehumanDV %>%
-  dplyr::select(SubjectNumber, Create_IPD, DH2_W_Civilized, N_Uncivilized)
+  dplyr::select(SubjectNumber, Create_IPD, N_Uncivilized)
 
 dv5cor2.lng <- melt(dv5cor2, id=c("SubjectNumber", "Create_IPD"), variable.name = "Group", value.name="Rating")
 
 ggplot(dv5cor2.lng, aes(x= Rating, y = Create_IPD, color = Group, group = Group)) +
   geom_point(position = position_jitter(width = 0.25)) +
   geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T) +
-  xlab("Dehumanization (0-100)") +
+  xlab("Uncivilized") +
   ylab("Support for Indigenous Peoples' Day") +
   labs(color='Dehumanization Measure') +
   scale_y_continuous(limits = c(0, NA))
@@ -315,13 +318,13 @@ ggplot(dv5cor2.lng, aes(x= Rating, y = Create_IPD, color = Group, group = Group)
 
 Here is the Civilized model uncentered:
 ```{r}
-lm16 <- lm(Create_IPD ~ N_Uncivilized + DH2_W_Civilized + N_Uncivilized*DH2_W_Civilized, dv5cor2)
+lm16 <- lm(Create_IPD ~ N_Uncivilized, dv5cor2)
 summary(lm16)
 ```
 
 ...and here it is centered:
 ```{r}
-lm17 <- lm(Create_IPD ~ scale(N_Uncivilized,scale=F) + scale(DH2_W_Civilized,scale=F) + scale(N_Uncivilized,scale=F)*scale(DH2_W_Civilized,scale=F), dv5cor2)
+lm17 <- lm(Create_IPD ~ scale(N_Uncivilized,scale=F), dv5cor2)
 summary(lm17)
 ```
 
@@ -333,7 +336,7 @@ We can also look at both of these groups side by side:
 ggplot(dv4cor.lng, aes(x= Rating, y = No_Columbus, color = Group, group = Group)) +
   geom_point(position = position_jitter(width = 0.25)) +
   geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T, color = "black") +
-  xlab("Dehumanization (0-100)") +
+  xlab("Uncivilized") +
   ylab("Support for No Columbus Day") +
   labs(color='Dehumanized Group') +
   facet_wrap(~ Group) +
@@ -347,7 +350,7 @@ and...
 ggplot(dv5cor.lng, aes(x= Rating, y = Create_IPD, color = Group, group = Group)) +
   geom_point(position = position_jitter(width = 0.25)) +
   geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T, color = "black") +
-  xlab("Dehumanization (0-100)") +
+  xlab("Uncivilized") +
   ylab("Support for IPD") +
   labs(color='Dehumanized Group') +
   facet_wrap(~ Group) +
