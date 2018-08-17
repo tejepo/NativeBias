@@ -163,7 +163,13 @@ pander(destable)
 ##Correlation of Civilized & Childlike for Natives
 
 ```{r whitenativedhcor, include =T, echo=F}
-plot(dfdehumanDV$DH2_N_Civilized, dfdehumanDV$DH5_N_Childlike)
+ggplot(dfdehumanDV, aes(x=DH2_N_Civilized, y = DH5_N_Childlike)) +
+  geom_point(position = position_jitter(width = 0.25)) +
+  geom_smooth(stat = "smooth", position = "identity", method = "lm", se = T, na.rm = T) +
+  xlab("Civilized (Natives)") +
+  ylab("Childlike (Natives)") +
+  scale_y_continuous(limits = c(0, NA))
+
 
 dehum.nw.cor <- cor.test(dfdehumanDV$DH2_N_Civilized, dfdehumanDV$DH5_N_Childlike, method = ("pearson"))
 
